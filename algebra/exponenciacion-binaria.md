@@ -3,11 +3,6 @@ title: Exponenciación Binaria
 layout: page
 ---
 
-<script type="text/javascript" charset="utf-8"
-src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,
-https://vincenttam.github.io/javascripts/MathJaxLocal.js"></script>
-
-
 # Binary Exponentiation
 
 Binary exponentiation (also known as exponentiation by squaring) is a trick which allows to calculate $a^n$ using only $O(\log n)$ multiplications (instead of $O(n)$ multiplications required by the naive approach).

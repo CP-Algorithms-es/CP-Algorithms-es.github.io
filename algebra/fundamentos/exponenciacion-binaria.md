@@ -48,7 +48,7 @@ La complejidad final de este algoritmo es $O(\log n)$: tenemos que calcular $\lo
 El siguiente enfoque recursivo expresa la misma idea:
 
 $$ a^n = \begin{cases}
-1 & \text{if} n == 0 \\
+1 & \text{si } n == 0 \\
 \left (a^{\frac{n}{2}} \right)^2 & \text{si } n > 0 \text{ y } n \text{ par} \\
 \left (a^{\frac{n - 1}{2}} \right)^2 \cdot a &\text{si } n > 0 \text{ y } n \text{ impar} \\
 \end{cases} $$
@@ -61,8 +61,8 @@ Primero, el enfoque recursivo, que es una traducción directa de la fórmula rec
 long long binpow (long long a, long long b) {
     if (b == 0)
         return 1;
-    long long res = binpow(a, b / 2);
-    if (b% 2)
+    long long res = binpow(a, b/2);
+    if (b % 2)
         return res * res * a;
     else
         return res * res;

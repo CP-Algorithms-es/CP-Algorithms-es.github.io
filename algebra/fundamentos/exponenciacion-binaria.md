@@ -137,7 +137,7 @@ permutación dada $ k $ veces.
 
 ### Aplicación rápida de un conjunto de operaciones geométricas a un conjunto de puntos
 
-**Problema:** Dados $ n $ puntos $ p_i $, aplique transformaciones de $ m $ a cada uno de estos puntos. Cada transformación puede ser un desplazamiento, una multiplicación por un escalar, o una rotación alrededor de un eje dado en un ángulo dado. También hay una operación de "bucle" que aplica una lista dada de transformaciones $ k $ veces (las operaciones de "bucle" se pueden anidar). Debe aplicar todas las transformaciones más rápido que $ O (n \cdot longitud) $, donde $ longitud $ es el número total de transformaciones que se aplicarán (después de desenrollar las operaciones de "bucle").
+**Problema:** Dados $ n $ puntos $ p_i $, aplique $m$ transformaciones a cada uno de estos puntos. Cada transformación puede ser un desplazamiento, una multiplicación por un escalar, o una rotación alrededor de un eje dado en un ángulo dado. También hay una operación de "bucle" que aplica una lista dada de transformaciones $ k $ veces (las operaciones de "bucle" se pueden anidar). Debe aplicar todas las transformaciones más rápido que $ O (n \cdot longitud) $, donde $ longitud $ es el número total de transformaciones que se aplicarán (después de desenrollar las operaciones de "bucle").
 
 **Solución:** Veamos cómo los diferentes tipos de transformaciones cambian las coordenadas:
 

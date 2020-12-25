@@ -4,60 +4,60 @@ title: Algoritmo Euclidiano
 
 {% include mathjax.html %}
 
-*Table of contents*
+**Tabla de contenido**
 
-- [Euclidean algorithm for computing the greatest common divisor](#euclidean-algorithm-for-computing-the-greatest-common-divisor)
-  - [Algorithm](#algorithm)
-  - [Implementation](#implementation)
-  - [Correctness Proof](#correctness-proof)
-  - [Time Complexity](#time-complexity)
-  - [Least common multiple](#least-common-multiple)
-  - [Binary GCD](#binary-gcd)
-  - [Practice Problems](#practice-problems)
+- [Algoritmo euclidiano para calcular el máximo común divisor](#algoritmo-euclidiano-para-calcular-el-máximo-común-divisor)
+  - [Algoritmo](#algoritmo)
+  - [Implementación](#implementación)
+  - [Prueba de correctitud](#prueba-de-correctitud)
+  - [Complejidad temporal](#complejidad-temporal)
+  - [Minimo común multiplo](#minimo-común-multiplo)
+  - [MCD binario](#mcd-binario)
+  - [Problemas de práctica](#problemas-de-práctica)
 
-# Euclidean algorithm for computing the greatest common divisor
+# Algoritmo euclidiano para calcular el máximo común divisor
 
-Given two non-negative integers $a$ and $b$, we have to find their **GCD** (greatest common divisor), i.e. the largest number which is a divisor of both $a$ and $b$.
-It's commonly denoted by $\gcd(a, b)$. Mathematically it is defined as:
-$$\gcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.$$
-(here the symbol "$\mid$" denotes divisibility, i.e. "$k \mid a$" means "$k$ divides $a$")
+Dados dos números enteros no negativos $a$ y $b$, tenemos que encontrar su **MCD** (máximo común divisor), es decir, el número más grande que es un divisor de $a$ y $b$.
+Se denota comúnmente por mcd(a, b). Matemáticamente se define como:
+$$mcd(a, b) = \max_ {k = 1 \dots \infty ~ : ~ k \mid a ~ \wedge k ~ \mid b} k.$$
+(aquí el símbolo "$\mid$" denota divisibilidad, es decir, "$k \mid a$" significa "$k$ divide $a$")
 
-When one of the numbers is zero, while the other is non-zero, their greatest common divisor, by definition, is the second number. When both numbers are zero, their greatest common divisor is undefined (it can be any arbitrarily large number), but we can define it to be zero. Which gives us a simple rule: if one of the numbers is zero, the greatest common divisor is the other number.
+Cuando uno de los números es cero, mientras que el otro es distinto de cero, su máximo común divisor, por definición, es el segundo número. Cuando ambos números son cero, su máximo común divisor no está definido (puede ser cualquier número arbitrariamente grande), pero podemos definirlo como cero. Lo que nos da una regla simple: si uno de los números es cero, el máximo común divisor es el otro número.
 
-The Euclidean algorithm, discussed below, allows to find the greatest common divisor of two numbers $a$ and $b$ in $O(\log \min(a, b))$.
+El algoritmo euclidiano, que se analiza a continuación, permite encontrar el máximo común divisor de dos números $a$ y $b$ en $O (\log\min(a, b))$.
 
-The algorithm was first described in Euclid's "Elements" (circa 300 BC), but it is possible that the algorithm has even earlier origins.
+El algoritmo se describió por primera vez en "Elementos" de Euclides (alrededor del año 300 a. C.), pero es posible que el algoritmo tenga orígenes incluso anteriores.
 
-## Algorithm
+## Algoritmo
 
-The algorithm is extremely simple:
+El algoritmo es extremadamente simple:
 
-$$\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\\\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}$$
+$$mcd(a, b) = \begin{cases}a,&\text{si }b = 0 \\\\ mcd(b, a \bmod b),&\text{de lo contrario.}\end{cases}$$
 
-## Implementation
+## Implementación
 
 ```cpp
-int gcd (int a, int b) {
-    if (b == 0)
+int mcs (int a, int b) {
+    if(b == 0)
         return a;
     else
-        return gcd (b, a % b);
+        return mcd(b, a % b);
 }
 ```
 
-Using the ternary operator in C++, we can write it as a one-liner.
+Usando el operador ternario en C ++, podemos escribirlo como una línea.
 
 ```cpp
 int gcd (int a, int b) {
-    return b ? gcd (b, a % b) : a;
+    return b ? mcd(b, a % b) : a;
 }
 ```
 
-And finally, here is a non-recursive implementation:
+Y finalmente, aquí hay una implementación no recursiva:
 
 ```cpp
-int gcd (int a, int b) {
-    while (b) {
+int mcd(int a, int b) {
+    while(b) {
         a %= b;
         swap(a, b);
     }
@@ -65,70 +65,70 @@ int gcd (int a, int b) {
 }
 ```
 
-## Correctness Proof
+## Prueba de correctitud
 
-First, notice that in each iteration of the Euclidean algorithm the second argument strictly decreases, therefore (since the arguments are always non-negative) the algorithm will always terminate.
+Primero, observe que en cada iteración del algoritmo euclidiano el segundo argumento es estrictamente decreciente, por lo tanto (dado que los argumentos son siempre no negativos) el algoritmo siempre termina.
 
-For the proof of correctness, we need to show that $\gcd(a, b) = \gcd(b, a \bmod b)$ for all $a \geq 0$, $b > 0$.
+Para la prueba de corrección, necesitamos demostrar que $mcd(a, b) = mcd(b, a \bmod b)$ para todo $a \geq 0$, $b > 0$.
 
-We will show that the value on the left side of the equation divides the value on the right side and vice versa. Obviously, this would mean that the left and right sides are equal, which will prove Euclid's algorithm.
+Mostraremos que el valor del lado izquierdo de la ecuación divide el valor del lado derecho y viceversa. Obviamente, esto significaría que los lados izquierdo y derecho son iguales, lo que demuestra el algoritmo de Euclides.
 
-Let $d = \gcd(a, b)$. Then by definition $d\mid a$ and $d\mid b$.
+Sea $d = mcd(a, b)$. Entonces, por definición, $d \mid a$ y $d \mid b$.
 
-Now let's represent the remainder of the division of $a$ by $b$ as follows:
-$$a \bmod b = a - b \cdot \Bigl\lfloor\dfrac{a}{b}\Bigr\rfloor$$
+Ahora representemos el resto de la división de $a$ por $b$ de la siguiente manera:
+$$a \bmod b = a - b \cdot\Bigl\lfloor\dfrac{a}{b}\Bigr\rfloor$$
 
-From this it follows that $d \mid (a \bmod b)$, which means we have the system of divisibilities:
-$$\begin{cases}d \mid b,\\\\ d \mid (a \mod b)\end{cases}$$
+De esto se deduce que $d \mid (a \bmod b)$, lo que significa que tenemos el sistema de divisibilidades:
+$$\begin{cases} d \mid b, \\\\ d \mid (a \mod b) \end{cases}$$
 
-Now we use the fact that for any three numbers $p$, $q$, $r$, if $p\mid q$ and $p\mid r$ then $p\mid \gcd(q, r)$. In our case, we get:
-$$d = \gcd(a, b) \mid \gcd(b, a \mod b)$$
+Ahora usamos el hecho de que para tres números cualesquiera $p$, $q$, $r$, si $p \mid q$ y $p \mid r$ entonces $p \mid mcd(q, r)$. En nuestro caso, obtenemos:
+$$d = mcd(a, b) \mid mcd(b, a \mod b)$$
 
-Thus we have shown that the left side of the original equation divides the right. The second half of the proof is similar.
+Por tanto, hemos demostrado que el lado izquierdo de la ecuación original divide al derecho. La segunda mitad de la prueba es similar.
 
-## Time Complexity
+## Complejidad temporal
 
-The running time of the algorithm is estimated by Lamé's theorem, which establishes a surprising connection between the Euclidean algorithm and the Fibonacci sequence:
+El tiempo de ejecución del algoritmo se estima mediante el teorema de Lamé, que establece una conexión sorprendente entre el algoritmo euclidiano y la secuencia de Fibonacci:
 
-If $a > b \geq 1$ and $b < F_n$ for some $n$, the Euclidean algorithm performs at most $n-2$ recursive calls.
+Si $a > b \geq 1$ y $b < F_n$ para algún $n$, el algoritmo euclidiano realiza como máximo $n-2$ llamadas recursivas.
 
-Moreover, it is possible to show that the upper bound of this theorem is optimal. When $a = F_n$ and $b = F_{n-1}$, $gcd(a, b)$ will perform exactly $n-2$ recursive calls. In other words, consecutive Fibonacci numbers are the worst case input for Euclid's algorithm.
+Además, es posible demostrar que el límite superior de este teorema es óptimo. Cuando $a = F_n$ y $b = F_{n-1}$, $mcd(a, b)$ realizará exactamente $n-2$ llamadas recursivas. En otras palabras, los números de Fibonacci consecutivos son la entrada del peor caso para el algoritmo de Euclides.
 
-Given that Fibonacci numbers grow exponentially, we get that the Euclidean algorithm works in $O(\log \min(a, b))$.
+Dado que los números de Fibonacci crecen exponencialmente, obtenemos que el algoritmo euclidiano funciona en $O (\log \min(a, b))$.
 
-## Least common multiple
+## Minimo común multiplo
 
-Calculating the least common multiple (commonly denoted **LCM**) can be reduced to calculating the GCD with the following simple formula:
-$$\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}$$
+El cálculo del mínimo común múltiplo (comúnmente denominado **MCM**) se puede reducir a calcular el MCD con la siguiente fórmula simple:
+$$\text{mcm}(a, b) = \frac{a \cdot b}{mcd(a, b)}$$
 
-Thus, LCM can be calculated using the Euclidean algorithm with the same time complexity:
+Por lo tanto, el MCM se puede calcular utilizando el algoritmo euclidiano con la misma complejidad de tiempo:
 
-A possible implementation, that cleverly avoids integer overflows by first dividing $a$ with the GCD, is given here:
+A continuación, se muestra una posible implementación que evita inteligentemente los desbordamientos de enteros dividiendo primero $a$ con el MCD:
 
 ```cpp
-int lcm (int a, int b) {
-    return a / gcd(a, b) * b;
+int mcm(int a, int b) {
+    return a / mcm(a, b) * b;
 }
 ```
 
-## Binary GCD
+## MCD binario
 
-The Binary GCD algorithm is an optimization to the normal Eulidean algorithm.
+El algoritmo MCD binario es una optimización del algoritmo euclidiano normal.
 
-The slow part of the normal algorithm are the modulo operations. Modulo operations, although we see them as $O(1)$, are a lot slower than simpler operations like addition, subtraction or bitwise operations.
-So it would be better to avoid those.
+La parte lenta del algoritmo normal son las operaciones de módulo. Las operaciones de módulo, aunque las vemos como $O (1)$, son mucho más lentas que las operaciones más simples como las operaciones de suma, resta u operaciones binarias.
+Entonces sería mejor evitarlos.
 
-It turns out, that you can design a fast GCD algorithm that avoids modulo operations.
-It's based on a few properties:
+Resulta que puede diseñar un algoritmo MCD rápido que evite operaciones de módulo.
+Se basa en algunas propiedades:
 
-  - If both numbers are even, then we can factor out a two of both and compute the GCD of the remaining numbers: $\gcd(2a, 2b) = 2 \gcd(a, b)$.
-  - If one of the numbers is even and the other one is odd, then we can remove the factor 2 from the even one: $\gcd(2a, b) = \gcd(a, b)$ if $b$ is odd.
-  - If both numbers are odd, then subtracting one number of the other one will not change the GCD: $\gcd(a, b) = \gcd(b, a-b)$ (this can be proven in the same way as the correctness proof of the normal algorithm)
+  - Si ambos números son pares, entonces podemos factorizar el dos de ambos y calcular el MCD de los números restantes: $mcd(2a, 2b) = 2 \ mcd(a, b)$.
+  - Si uno de los números es par y el otro es impar, entonces podemos quitar el factor 2 del par: $mcd(2a, b) = mcd(a, b)$ si $b$ es impar.
+  - Si ambos números son impares, restar un número al otro no cambiará el MCD: $mcd(a, b) = mcd(b, ab)$ (esto se puede probar de la misma manera que la prueba de correctitud del algoritmo normal)
 
-Using only these properties, and some fast bitwise functions from GCC, we can implement a fast version:
+Usando solo estas propiedades y algunas funciones rápidas binarias de GCC, podemos implementar una versión rápida:
 
 ```cpp
-int gcd(int a, int b) {
+int mcd(int a, int b) {
     if (!a || !b)
         return a | b;
     unsigned shift = __builtin_ctz(a | b);
@@ -143,9 +143,9 @@ int gcd(int a, int b) {
 }
 ```
 
-Notice, that such an optimization is usually not necessary, and most programming languages already have a GCD function in their standard libraries.
-E.g. C++17 has such a function in the `numeric` header.
+Tenga en cuenta que esta optimización no suele ser necesaria y la mayoría de los lenguajes de programación ya tienen una función GCD en sus bibliotecas estándar.
+P.ej. C ++ 17 tiene tal función en el encabezado `numeric`.
 
-## Practice Problems
+## Problemas de práctica
 
-- [Codechef - GCD and LCM](https://www.codechef.com/problems/FLOW016)
+- [Codechef - MCD y MCM] (https://www.codechef.com/problems/FLOW016)

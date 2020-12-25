@@ -4,77 +4,77 @@ title: Exponenciación Binaria
 
 {% include mathjax.html %}
 
-# Binary Exponentiation
+# Exponenciación binaria
 
-Binary exponentiation (also known as exponentiation by squaring) is a trick which allows to calculate $a^n$ using only $O(\log n)$ multiplications (instead of $O(n)$ multiplications required by the naive approach).
+La exponenciación binaria (también conocida como exponenciación por cuadratura) es un truco que permite calcular $a^n$ usando solo $O(\log n)$ multiplicaciones (en lugar de $O(n)$ multiplicaciones requeridas por el enfoque ingenuo).
 
-It also has important applications in many tasks unrelated to arithmetic, since it
-can be used with any operations that have the property of **associativity**:
+También tiene aplicaciones importantes en muchas tareas no relacionadas con la aritmética, ya que
+se puede utilizar con cualquier operación que tenga la propiedad de **asociatividad**:
 
-$$(X \cdot Y) \cdot Z = X \cdot (Y \cdot Z)$$
+$$ (X \cdot Y) \cdot Z = X \cdot (Y \cdot Z) $$
 
-Most obviously this applies to modular multiplication, to multiplication of matrices and
-to other problems which we will discuss below.
+Obviamente, esto se aplica a la multiplicación modular, a la multiplicación de matrices y
+a otros problemas que discutiremos a continuación.
 
-## Algorithm
+## Algoritmo
 
-Raising $a$ to the power of $n$ is expressed naively as multiplication by $a$ done $n - 1$ times:
-$a^{n} = a \cdot a \cdot \ldots \cdot a$. However, this approach is not practical for large $a$ or $n$.
+Elevar $a$ a la potencia de $n$ se expresa ingenuamente como una multiplicación por $a$ hecha $n - 1$ veces:
+$a^{n} = a \cdot a \cdot \ldots \cdot a$. Sin embargo, este enfoque no es práctico para $a$ o $n$ grandes.
 
-$a^{b+c} = a^b \cdot a^c$ and $a^{2b} = a^b \cdot a^b = (a^b)^2$.
+$a^{b + c} = a^b \cdot a^c$ y $a^{2b} = a^b \cdot a^b = (a^b)^2$.
 
-The idea of binary exponentiation is, that we split the work using the binary representation of the exponent.
+La idea de la exponenciación binaria es que dividimos el trabajo usando la representación binaria del exponente.
 
-Let's write $n$ in base 2, for example:
-$$3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1$$
+Escribamos $n$ en base $2$, por ejemplo:
+$$ 3^{13} = 3^{1101_2} = 3^8 \cdot 3^4 \cdot 3^1 $$
 
-Since the number $n$ has exactly $\lfloor \log_2 n \rfloor + 1$ digits in base 2, we only need to perform $O(\log n)$ multiplications, if we know the powers $a^1, a^2, a^4, a^8, \dots, a^{\lfloor \log n \rfloor}$.
+Dado que el número $n$ tiene exactamente $\lfloor \log_2 n \rfloor + 1$ dígitos en base 2, solo necesitamos realizar $O(\log n)$ multiplicaciones si conocemos las potencias $a^1, a^2, a^4, a^8, \dots, a^{\lfloor \log n \rfloor}$.
 
-So we only need to know a fast way to compute those.
-Luckily this is very easy, since an element in the sequence is just the square of the previous element.
+Así que solo necesitamos conocer una forma rápida de calcularlas.
+Afortunadamente, esto es muy fácil, ya que un elemento de la secuencia es solo el cuadrado del elemento anterior.
 
 $$\begin{align}
 3^1 &= 3 \\\\
-3^2 &= \left(3^1\right)^2 = 3^2 = 9 \\\\
-3^4 &= \left(3^2\right)^2 = 9^2 = 81 \\\\
-3^8 &= \left(3^4\right)^2 = 81^2 = 6561
+3^2 &= \left (3^1 \right)^2 = 3^2 = 9 \\\\
+3^4 &= \left (3^2 \right)^2 = 9^2 = 81 \\\\
+3^8 &= \left (3^4 \right)^2 = 81^2 = 6561
 \end{align}$$
 
-So to get the final answer for $3^{13}$, we only need to multiply three of them (skipping $3^2$ because the corresponding bit in $n$ is not set):
+Entonces, para obtener la respuesta final para $3^{13}$, solo necesitamos multiplicar tres de ellos (omitiendo $3^2$ porque el bit correspondiente en $n$ no está configurado):
 $3^{13} = 6561 \cdot 81 \cdot 3 = 1594323$
 
-The final complexity of this algorithm is $O(\log n)$: we have to compute $\log n$ powers of $a$, and then have to do at most $\log n$ multiplications to get the final answer from them.
+La complejidad final de este algoritmo es $O(\log n)$: tenemos que calcular $\log n$ potencias de $a$, y luego tenemos que hacer como máximo $\log n$ multiplicaciones para obtener la respuesta final de ellos.
 
-The following recursive approach expresses the same idea:
+El siguiente enfoque recursivo expresa la misma idea:
 
-$$a^n = \begin{cases}
-1 &\text{if } n == 0 \\\\
-\left(a^{\frac{n}{2}}\right)^2 &\text{if } n > 0 \text{ and } n \text{ even}\\\\
-\left(a^{\frac{n - 1}{2}}\right)^2 \cdot a &\text{if } n > 0 \text{ and } n \text{ odd}\\\\
-\end{cases}$$
+$$ a^n = \begin{cases}
+1 & \text{if} n == 0 \\\\
+\left (a^{\frac{n}{2}} \right)^2 & \text{si } n > 0 \text{ y } n \text{ par} \\\\
+\left (a^{\frac{n - 1}{2}} \right)^2 \cdot a &\text{si } n > 0 \text{ y } n \text{ impar} \\\\
+\end{cases} $$
 
-## Implementation
+## Implementación
 
-First the recursive approach, which is a direct translation of the recursive formula:
+Primero, el enfoque recursivo, que es una traducción directa de la fórmula recursiva:
 
 ```cpp
-long long binpow(long long a, long long b) {
+long long binpow (long long a, long long b) {
     if (b == 0)
         return 1;
     long long res = binpow(a, b / 2);
-    if (b % 2)
+    if (b% 2)
         return res * res * a;
     else
         return res * res;
 }
 ```
 
-The second approach accomplishes the same task without recursion.
-It computes all the powers in a loop, and multiplies the ones with the corresponding set bit in $n$.
-Although the complexity of both approaches is identical, this approach will be faster in practice since we have the overhead of the recursive calls.
+El segundo enfoque realiza la misma tarea sin recursividad.
+Calcula todas las potencias en un bucle y multiplica las que tienen el bit establecido correspondiente en $ n $.
+Aunque la complejidad de ambos enfoques es idéntica, este enfoque será más rápido en la práctica ya que no tenemos la sobrecarga de las llamadas recursivas.
 
 ```cpp
-long long binpow(long long a, long long b) {
+long long binpow (long long a, long long b) {
     long long res = 1;
     while (b > 0) {
         if (b & 1)
@@ -86,20 +86,20 @@ long long binpow(long long a, long long b) {
 }
 ```
 
-## Applications
+## Aplicaciones
 
-### Effective computation of large exponents modulo a number
+### Cálculo efectivo de grandes exponentes módulo un número
 
-**Problem:**
-Compute $x^n \bmod m$.
-This is a very common operation. For instance it is used in computing the [modular multiplicative inverse](./algebra/module-inverse.html).
+**Problema:**
+Calcule $ x^n \bmod m $.
+Ésta es una operación muy común. Por ejemplo, se utiliza para calcular el [inverso multiplicativo modular](./algebra/fundamentos/inverso-modular.html).
 
-**Solution:**
-Since we know that the module operator doesn't interfere with multiplications ($a \cdot b \equiv (a \bmod m) \cdot (b \bmod m) \pmod m$), we can directly use the same code, and just replace every multiplication with a modular multiplication:
+**Solución:**
+Como sabemos que el operador del módulo no interfiere con las multiplicaciones ($ a \cdot b \equiv (a \bmod m) \cdot (b \bmod m) \pmod m $), podemos usar directamente el mismo código y simplemente reemplace cada multiplicación con una multiplicación modular:
 
 ```cpp
 long long binpow(long long a, long long b, long long m) {
-    a %= m;
+    a% = m;
     long long res = 1;
     while (b > 0) {
         if (b & 1)
@@ -111,122 +111,124 @@ long long binpow(long long a, long long b, long long m) {
 }
 ```
 
-**Note:** If $m$ is a prime number we can speed up a bit this algorithm by calculating $x ^ {n \mod (m-1)}$ instead of $x ^ n$.
-This follows directly from [Fermat's little theorem](./algebra/module-inverse.html#toc-tgt-2).
+**Nota:** Si $ m $ es un número primo, podemos acelerar un poco este algoritmo calculando $ x^{n \mod (m-1)} $ en lugar de $ x^n $.
+Esto se sigue directamente del [pequeño teorema de Fermat](./algebra/inverso-modular.html#toc-tgt-2).
 
-### Effective computation of Fibonacci numbers
+### Cálculo efectivo de números de Fibonacci
 
-**Problem:** Compute $n$-th Fibonacci number $F_n$.
+**Problema:** Calcule el $ n $-ésimo número de Fibonacci $ F_n $.
 
-**Solution:** For more details, see the [Fibonacci Number article](./algebra/fibonacci-numbers.html).
-We will only go through an overview of the algorithm.
-To compute the next Fibonacci number, only the two previous ones are needed, as $F_n = F_{n-1} + F_{n-2}$.
-We can build a $2 \times 2$ matrix that describes this transformation:
-the transition from $F_i$ and $F_{i+1}$ to $F_{i+1}$ and $F_{i+2}$.
-For example, applying this transformation to the pair $F_0$ and $F_1$ would change it into $F_1$ and $F_2$.
-Therefore, we can raise this transformation matrix to the $n$-th power to find $F_n$ in time complexity $O(\log n)$.
+**Solución:** Para obtener más detalles, consulte el [artículo sobre el número de Fibonacci](.algebra/numeros-de-fibonacci.html).
+Solo veremos una descripción general del algoritmo.
+Para calcular el siguiente número de Fibonacci, solo se necesitan los dos anteriores, como $ F_n = F_{n-1} + F_{n-2} $.
+Podemos construir una matriz de $ 2 \times 2 $ que describa esta transformación:
+la transición de $ F_i $ y $ F_{i + 1} $ a $ F_{i + 1} $ y $ F_{i + 2} $.
+Por ejemplo, aplicar esta transformación al par $ F_0 $ y $ F_1 $ lo cambiaría a $ F_1 $ y $ F_2 $.
+Por lo tanto, podemos elevar esta matriz de transformación a la $ n $-ésima potencia para encontrar $ F_n $ en complejidad temporal $ O(\log n) $.
 
-### Applying a permutation $k$ times
+### Aplicar una permutación $ k $ veces
 
-**Problem:** You are given a sequence of length $n$. Apply to it a given permutation $k$ times.
+**Problema:** Dada una secuencia de longitud $ n $, aplicarle una
+permutación dada $ k $ veces.
 
-**Solution:** Simply raise the permutation to $k$-th power using binary exponentiation, and then apply it to the sequence. This will give you a time complexity of $O(n \log k)$.
+**Solución:** Simplemente eleve la permutación a la $ k $-ésima potencia usando exponenciación binaria, y luego aplíquela a la secuencia. Esto le dará una complejidad de tiempo de $ O(n \log k) $.
 
-**Note:** This task can be solved more efficiently in linear time by building the permutation graph and considering each cycle independently. You could then compute $k$ modulo the size of the cycle and find the final position for each number which is part of this cycle.
+**Nota:** Esta tarea se puede resolver de manera más eficiente en tiempo lineal construyendo el gráfico de permutación y considerando cada ciclo de forma independiente. Luego, podría calcular $ k $ módulo el tamaño del ciclo y encontrar la posición final para cada número que es parte de este ciclo.
 
-### Fast application of a set of geometric operations to a set of points
+### Aplicación rápida de un conjunto de operaciones geométricas a un conjunto de puntos
 
-**Problem:** Given $n$ points $p_i$, apply $m$ transformations to each of these points. Each transformation can be a shift, a scaling or a rotation around a given axis by a given angle. There is also a "loop" operation which applies a given list of transformations $k$ times ("loop" operations can be nested). You should apply all transformations faster than $O(n \cdot length)$, where $length$ is the total number of transformations to be applied (after unrolling "loop" operations).
+**Problema:** Dados $ n $ puntos $ p_i $, aplique transformaciones de $ m $ a cada uno de estos puntos. Cada transformación puede ser un desplazamiento, una multiplicación por un escalar, o una rotación alrededor de un eje dado en un ángulo dado. También hay una operación de "bucle" que aplica una lista dada de transformaciones $ k $ veces (las operaciones de "bucle" se pueden anidar). Debe aplicar todas las transformaciones más rápido que $ O (n \cdot longitud) $, donde $ longitud $ es el número total de transformaciones que se aplicarán (después de desenrollar las operaciones de "bucle").
 
-**Solution:** Let's look at how the different types of transformations change the coordinates:
+**Solución:** Veamos cómo los diferentes tipos de transformaciones cambian las coordenadas:
 
-* Shift operation: adds a different constant to each of the coordinates.
-* Scaling operation: multiplies each of the coordinates by a different constant.
-* Rotation operation: the transformation is more complicated (we won't go in details here), but each of the new coordinates still can be represented as a linear combination of the old ones.
+* Operación de cambio: agrega una constante diferente a cada una de las coordenadas.
+* Operación de escala: multiplica cada una de las coordenadas por una constante diferente.
+* Operación de rotación: la transformación es más complicada (no entraremos en detalles aquí), pero cada una de las nuevas coordenadas aún se puede representar como una combinación lineal de las antiguas.
 
-As you can see, each of the transformations can be represented as a linear operation on the coordinates. Thus, a transformation can be written as a $4 \times 4$ matrix of the form:
+Como puede ver, cada una de las transformaciones se puede representar como una operación lineal en las coordenadas. Por lo tanto, una transformación se puede escribir como una matriz de $ 4 \times 4 $ de la forma:
 
-$$\begin{pmatrix}
-a_{11} & a_ {12} & a_ {13} & a_ {14} \\\
-a_{21} & a_ {22} & a_ {23} & a_ {24} \\\
-a_{31} & a_ {32} & a_ {33} & a_ {34} \\\
-a_{41} & a_ {42} & a_ {43} & a_ {44} \\\
-\end{pmatrix}$$
+$$ \begin{pmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} \\\
+a_{21} & a_{22} & a_{23} & a_{24} \\\
+a_{31} & a_{32} & a_{33} & a_{34} \\\
+a_{41} & a_{42} & a_{43} & a_{44} \\\
+\end{pmatrix} $$
 
-that, when multiplied by a vector with the old coordinates and an unit gives a new vector with the new coordinates and an unit:
+que, cuando se multiplica por un vector con las coordenadas antiguas y una unidad da un nuevo vector con las nuevas coordenadas y una unidad:
 
-$$\begin{pmatrix} x & y & z & 1 \end{pmatrix} \cdot
+$$ \begin{pmatrix} x & y & z & 1 \end{pmatrix} \cdot
 \begin{pmatrix}
-a_{11} & a_ {12} & a_ {13} & a_ {14} \\\
-a_{21} & a_ {22} & a_ {23} & a_ {24} \\\
-a_{31} & a_ {32} & a_ {33} & a_ {34} \\\
-a_{41} & a_ {42} & a_ {43} & a_ {44} \\\
+a_{11} & a_{12} & a_{13} & a_{14} \\\
+a_{21} & a_{22} & a_{23} & a_{24} \\\
+a_{31} & a_{32} & a_{33} & a_{34} \\\
+a_{41} & a_{42} & a_{43} & a_{44} \\\
 \end{pmatrix}
- = \begin{pmatrix} x' & y' & z' & 1 \end{pmatrix}$$
+ = \begin{pmatrix} x '& y' & z '& 1 \end{pmatrix} $$
 
-(Why introduce a fictitious fourth coordinate, you ask? Without this, it would not be possible to implement the shift operation, as it requires us to add a constant to the coordinates. Without the fictitious coordinates, we would only be able to apply a linear combination to the coordinates, not being able to add a constant.)
+(¿Por qué introducir una cuarta coordenada ficticia? Sin esto, no sería posible implementar la operación de desplazamiento, ya que requiere que agreguemos una constante a las coordenadas. Sin las coordenadas ficticias, solo podríamos aplicar una combinación lineal a las coordenadas, no pudiendo agregar una constante.)
 
-Here are some examples of how transformations are represented in matrix form:
+A continuación, se muestran algunos ejemplos de cómo se representan las transformaciones en forma de matriz:
 
-* Shift operation: shift $x$ coordinate by $5$, $y$ coordinate by $7$ and $z$ coordinate by $9$.
-$$\begin{pmatrix}
+* Operación de cambio: cambiar la coordenada $ x $ por $ 5 $, la coordenada $ y $ por $ 7 $ y la coordenada $ z $ por $ 9 $.
+$$ \begin{pmatrix}
 1 & 0 & 0 & 0 \\\
 0 & 1 & 0 & 0 \\\
 0 & 0 & 1 & 0 \\\
 5 & 7 & 9 & 1 \\\
-\end{pmatrix}$$
+\end{pmatrix} $$
 
-* Scaling operation: scale the $x$ coordinate by $10$ and the other two by $5$.
-$$\begin{pmatrix}
+* Operación de escala: escala la coordenada $ x $ en $ 10 $ y las otras dos en $ 5 $.
+$$ \begin{pmatrix}
 10 & 0 & 0 & 0 \\\
 0 & 5 & 0 & 0 \\\
 0 & 0 & 5 & 0 \\\
 0 & 0 & 0 & 1 \\\
-\end{pmatrix}$$
+\end{pmatrix} $$
 
-* Rotation operation: rotate $\theta$ degrees around the $x$ axis following the right-hand rule (counter-clockwise direction).
-$$\begin{pmatrix}
+* Operación de rotación: gire $ \theta $ grados alrededor del eje $ x $ siguiendo la regla de la mano derecha (sentido antihorario).
+$$ \begin{pmatrix}
 1 & 0 & 0 & 0 \\\
 0 & \cos \theta & -\sin \theta & 0 \\\
 0 & \sin \theta & \cos \theta & 0 \\\
 0 & 0 & 0 & 1 \\\
-\end{pmatrix}$$
+\end{pmatrix} $$
 
-Now, once every transformation is described as a matrix, the sequence of transformations can be described as a product of these matrices, and a "loop" of $k$ repetitions can be described as the matrix raised to the power of $k$ (which can be calculated using binary exponentiation in $O(\log{k})$). This way, the matrix which represents all transformations can be calculated first in $O(m \log{k})$, and then it can be applied to each of the $n$ points in $O(n)$ for a total complexity of $O(n + m \log{k})$.
+Ahora, una vez que cada transformación se describe como una matriz, la secuencia de transformaciones se puede describir como un producto de estas matrices, y un "bucle" de $ k $ repeticiones se puede describir como la matriz elevada a la potencia de $ k $ (que se puede calcular usando exponenciación binaria en $ O(\log{k}) $). De esta manera, la matriz que representa todas las transformaciones se puede calcular primero en $ O(m \log{k}) $, y luego se puede aplicar a cada uno de los $ n $ puntos en $ O(n) $ para un total complejidad de $ O(n + m \log{k}) $.
 
 
-### Number of paths of length $k$ in a graph
+### Número de caminos de longitud $ k $ en un gráfico
 
-**Problem:** Given a directed unweighted graph of $n$ vertices, find the number of paths of length $k$ from any vertex $u$ to any other vertex $v$.
+**Problema:** Dado un gráfico dirigido sin pesos de $ n $ vértices, encuentre el número de caminos de longitud $ k $ desde cualquier vértice $ u $ a cualquier otro vértice $ v $.
 
-**Solution:** This problem is considered in more detail in [a separate article](./graph/fixed_length_paths.html). The algorithm consists of raising the adjacency matrix $M$ of the graph (a matrix where $m_{ij} = 1$ if there is an edge from $i$ to $j$, or $0$ otherwise) to the $k$-th power. Now $m_{ij}$ will be the number of paths of length $k$ from $i$ to $j$. The time complexity of this solution is $O(n^3 \log k)$.
+**Solución:** Este problema se analiza con más detalle en [un artículo separado](./grafos/caminos-de-longitud-fija.html). El algoritmo consiste en elevar la matriz de adyacencia $ M $ del gráfico (una matriz donde $ m_{ij} = 1 $ si hay una arista de $ i $ a $ j $, o $ 0 $ en caso contrario) a la $ k $-ésimo potencia. Ahora $ m_{ij} $ será el número de caminos de longitud $ k $ desde $ i $ a $ j $. La complejidad temporal de esta solución es $ O(n^3 \log k) $.
 
-**Note:** In that same article, another variation of this problem is considered: when the edges are weighted and it is required to find the minimum weight path containing exactly $k$ edges. As shown in that article, this problem is also solved by exponentiation of the adjacency matrix. The matrix would have the weight of the edge from $i$ to $j$, or $\infty$ if there is no such edge.
-Instead of the usual operation of multiplying two matrices, a modified one should be used:
-instead of multiplication, both values are added, and instead of a summation, a minimum is taken.
-That is: $result_{ij} = \min\limits_{1\ \leq\ k\ \leq\ n}(a_{ik} + b_{kj})$.
+**Nota:** En ese mismo artículo, se considera otra variación de este problema: cuando los ejes están ponderados y se requiere encontrar la ruta de peso mínimo que contenga exactamente $ k $ ejes. Como se muestra en ese artículo, este problema también se resuelve mediante exponenciación de la matriz de adyacencia. La matriz tendría el peso de la arista desde $ i $ a $ j $, o $ \infty $ si no existe dicha arista.
+En lugar de la operación habitual de multiplicar dos matrices, se debe utilizar una modificada:
+en lugar de multiplicación,
+se suman los dos valores y, en lugar de una suma, se toma un mínimo.
+Es decir: $ resultado_{ij} = \min \limits_{1 \ \leq\ k \ \leq\ n}(a_{ik} + b_{kj}) $.
 
-### Variation of binary exponentiation: multiplying two numbers modulo $m$
+### Variación de la exponenciación binaria: multiplicar dos números módulo $ m $
 
-**Problem:** Multiply two numbers $a$ and $b$ modulo $m$. $a$ and $b$ fit in the built-in data types, but their product is too big to fit in a 64-bit integer. The idea is to compute $a \cdot b \pmod m$ without using bignum arithmetics.
+**Problema** Multiplique dos números $ a $ y $ b $ módulo $ m $. $ a $ y $ b $ encajan en tipos de datos integrados, pero su producto es demasiado grande para caber en un entero de 64 bits. La idea es calcular $ a \cdot b \pmod m $ sin usar aritmética de números grandes.
 
-**Solution:** We simply apply the binary construction algorithm described above, only performing additions instead of multiplications. In other words, we have "expanded" the multiplication of two numbers to $O (\log m)$ operations of addition and multiplication by two (which, in essence, is an addition).
+**Solución:** Simplemente aplicamos el algoritmo de construcción binaria descrito anteriormente, solo realizando sumas en lugar de multiplicaciones. En otras palabras, hemos "expandido" la multiplicación de dos números a $ O(\log m) $ operaciones de suma y multiplicación por dos (que, en esencia, es una suma).
 
-$$a \cdot b = \begin{cases}
-0 &\text{if }a = 0 \\\\
-2 \cdot \frac{a}{2} \cdot b &\text{if }a > 0 \text{ and }a \text{ even} \\\\
-2 \cdot \frac{a-1}{2} \cdot b + b &\text{if }a > 0 \text{ and }a \text{ odd}
-\end{cases}$$
+$$ a \cdot b = \begin{cases}
+0 & \text {si } a = 0 \\\\
+2 \cdot \frac{a} {2} \cdot b & \text{si } a> 0 \text{ y } a \text{ par} \\\\
+2 \cdot \frac{a-1} {2} \cdot b + b & \text{si } a> 0 \text{ and } a \text{ impar}
+\end{cases} $$
 
-**Note:** You can solve this task in a different way by using floating-point operations. First compute the expression $\frac{a \cdot b}{m}$ using floating-point numbers and cast it to an unsigned integer $q$. Subtract $q \cdot m$ from $a \cdot b$ using unsigned integer arithmetics and take it modulo $m$ to find the answer. This solution looks rather unreliable, but it is very fast, and very easy to implement. See [here](https://cs.stackexchange.com/questions/77016/modular-multiplication) for more information.
+**Nota:** Puede resolver esta tarea de una manera diferente utilizando operaciones de punto flotante. Primero calcule la expresión $ \frac{a \cdot b}{m} $ usando números de punto flotante y conviértala en un entero sin signo $ q $. Reste $ q \cdot m $ de $ a \cdot b $ usando aritmética de enteros sin signo y tómelo módulo $ m $ para encontrar la respuesta. Esta solución parece poco fiable, pero es muy rápida y muy fácil de implementar. Consulte [aquí](https://cs.stackexchange.com/questions/77016/modular-multiplication) para obtener más información.
 
-## Practice Problems
+## Problemas de práctica
 
-* [UVa 1230 - MODEX](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3671)
-* [UVa 374 - Big Mod](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=310)
-* [UVa 11029 - Leading and Trailing](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1970)
-* [Codeforces - Parking Lot](http://codeforces.com/problemset/problem/630/I)
-* [SPOJ - The last digit](http://www.spoj.com/problems/LASTDIG/)
-* [SPOJ - Locker](http://www.spoj.com/problems/LOCKER/)
-* [LA - 3722 Jewel-eating Monsters](https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1723)
-* [SPOJ - Just add it](http://www.spoj.com/problems/ZSUM/)
+* [UVa 1230 - MODEX] (http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3671)
+* [UVa 374 - Big Mod] (http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=310)
+* [UVa 11029 - Leading and Trailing] (https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1970)
+* [Codeforces - Parking Lot] (http://codeforces.com/problemset/problem/630/I)
+* [SPOJ - The last digit] (http://www.spoj.com/problems/LASTDIG/)
+* [SPOJ - Locker] (http://www.spoj.com/problems/LOCKER/)
+* [LA - 3722 Jewel-eating Monsters] (https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1723)
+* [SPOJ - Just add it] (http://www.spoj.com/problems/ZSUM/)

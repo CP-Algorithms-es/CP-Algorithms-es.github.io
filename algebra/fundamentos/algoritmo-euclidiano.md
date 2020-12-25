@@ -148,4 +148,4 @@ P.ej. C ++ 17 tiene tal función en el encabezado `numeric`.
 
 ## Problemas de práctica
 
-- [Codechef - MCD y MCM] (https://www.codechef.com/problems/FLOW016)
+- [Codechef - MCD y MCM](https://www.codechef.com/problems/FLOW016)

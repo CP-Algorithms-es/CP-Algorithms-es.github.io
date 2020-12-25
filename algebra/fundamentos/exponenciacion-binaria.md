@@ -1,7 +1,8 @@
 ---
 title: Exponenciación Binaria
-layout: page
 ---
+
+{% include mathjax.html %}
 
 # Binary Exponentiation
 

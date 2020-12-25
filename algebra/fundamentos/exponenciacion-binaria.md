@@ -95,7 +95,7 @@ Calcule $ x^n \bmod m $.
 Ésta es una operación muy común. Por ejemplo, se utiliza para calcular el [inverso multiplicativo modular](./algebra/fundamentos/inverso-modular.html).
 
 **Solución:**
-Como sabemos que el operador del módulo no interfiere con las multiplicaciones ($ a \cdot b \equiv (a \bmod m) \cdot (b \bmod m) \pmod m $), podemos usar directamente el mismo código y simplemente reemplace cada multiplicación con una multiplicación modular:
+Como sabemos que el operador del módulo no interfiere con las multiplicaciones ($ a \cdot b \equiv (a \bmod m) \cdot (b \bmod m) \pmod m $), podemos usar directamente el mismo código y simplemente reemplazar cada multiplicación con una multiplicación modular:
 
 ```cpp
 long long binpow(long long a, long long b, long long m) {

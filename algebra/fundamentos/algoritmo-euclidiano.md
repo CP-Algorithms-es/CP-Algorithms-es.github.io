@@ -37,7 +37,7 @@ $$mcd(a, b) = \begin{cases}a,&\text{si }b = 0 \\\\ mcd(b, a \bmod b),&\text{de l
 ## Implementación
 
 ```cpp
-int mcs (int a, int b) {
+int mcd (int a, int b) {
     if(b == 0)
         return a;
     else
@@ -48,7 +48,7 @@ int mcs (int a, int b) {
 Usando el operador ternario en C ++, podemos escribirlo como una línea.
 
 ```cpp
-int gcd (int a, int b) {
+int mcd (int a, int b) {
     return b ? mcd(b, a % b) : a;
 }
 ```
@@ -143,7 +143,7 @@ int mcd(int a, int b) {
 }
 ```
 
-Tenga en cuenta que esta optimización no suele ser necesaria y la mayoría de los lenguajes de programación ya tienen una función GCD en sus bibliotecas estándar.
+Tenga en cuenta que esta optimización no suele ser necesaria y la mayoría de los lenguajes de programación ya tienen una función GCD (MCD) en sus bibliotecas estándar.
 P.ej. C ++ 17 tiene tal función en el encabezado `numeric`.
 
 ## Problemas de práctica

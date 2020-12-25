@@ -34,9 +34,9 @@ Así que solo necesitamos conocer una forma rápida de calcularlas.
 Afortunadamente, esto es muy fácil, ya que un elemento de la secuencia es solo el cuadrado del elemento anterior.
 
 $$\begin{align}
-3^1 &= 3 \\\\
-3^2 &= \left (3^1 \right)^2 = 3^2 = 9 \\\\
-3^4 &= \left (3^2 \right)^2 = 9^2 = 81 \\\\
+3^1 &= 3 \\
+3^2 &= \left (3^1 \right)^2 = 3^2 = 9 \\
+3^4 &= \left (3^2 \right)^2 = 9^2 = 81 \\
 3^8 &= \left (3^4 \right)^2 = 81^2 = 6561
 \end{align}$$
 
@@ -48,9 +48,9 @@ La complejidad final de este algoritmo es $O(\log n)$: tenemos que calcular $\lo
 El siguiente enfoque recursivo expresa la misma idea:
 
 $$ a^n = \begin{cases}
-1 & \text{if} n == 0 \\\\
-\left (a^{\frac{n}{2}} \right)^2 & \text{si } n > 0 \text{ y } n \text{ par} \\\\
-\left (a^{\frac{n - 1}{2}} \right)^2 \cdot a &\text{si } n > 0 \text{ y } n \text{ impar} \\\\
+1 & \text{if} n == 0 \\
+\left (a^{\frac{n}{2}} \right)^2 & \text{si } n > 0 \text{ y } n \text{ par} \\
+\left (a^{\frac{n - 1}{2}} \right)^2 \cdot a &\text{si } n > 0 \text{ y } n \text{ impar} \\
 \end{cases} $$
 
 ## Implementación

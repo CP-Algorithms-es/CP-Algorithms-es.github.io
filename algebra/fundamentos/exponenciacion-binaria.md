@@ -151,7 +151,7 @@ $$ \begin{pmatrix}
 a_{11} & a_{12} & a_{13} & a_{14} \\\
 a_{21} & a_{22} & a_{23} & a_{24} \\\
 a_{31} & a_{32} & a_{33} & a_{34} \\\
-a_{41} & a_{42} & a_{43} & a_{44} \\\
+a_{41} & a_{42} & a_{43} & a_{44}
 \end{pmatrix} $$
 
 que, cuando se multiplica por un vector con las coordenadas antiguas y una unidad da un nuevo vector con las nuevas coordenadas y una unidad:
@@ -161,7 +161,7 @@ $$ \begin{pmatrix} x & y & z & 1 \end{pmatrix} \cdot
 a_{11} & a_{12} & a_{13} & a_{14} \\\
 a_{21} & a_{22} & a_{23} & a_{24} \\\
 a_{31} & a_{32} & a_{33} & a_{34} \\\
-a_{41} & a_{42} & a_{43} & a_{44} \\\
+a_{41} & a_{42} & a_{43} & a_{44}
 \end{pmatrix}
  = \begin{pmatrix} x '& y' & z '& 1 \end{pmatrix} $$
 
@@ -174,7 +174,7 @@ $$ \begin{pmatrix}
 1 & 0 & 0 & 0 \\\
 0 & 1 & 0 & 0 \\\
 0 & 0 & 1 & 0 \\\
-5 & 7 & 9 & 1 \\\
+5 & 7 & 9 & 1
 \end{pmatrix} $$
 
 * Operación de escala: escala la coordenada $ x $ en $ 10 $ y las otras dos en $ 5 $.
@@ -182,7 +182,7 @@ $$ \begin{pmatrix}
 10 & 0 & 0 & 0 \\\
 0 & 5 & 0 & 0 \\\
 0 & 0 & 5 & 0 \\\
-0 & 0 & 0 & 1 \\\
+0 & 0 & 0 & 1
 \end{pmatrix} $$
 
 * Operación de rotación: gire $ \theta $ grados alrededor del eje $ x $ siguiendo la regla de la mano derecha (sentido antihorario).
@@ -190,7 +190,7 @@ $$ \begin{pmatrix}
 1 & 0 & 0 & 0 \\\
 0 & \cos \theta & -\sin \theta & 0 \\\
 0 & \sin \theta & \cos \theta & 0 \\\
-0 & 0 & 0 & 1 \\\
+0 & 0 & 0 & 1
 \end{pmatrix} $$
 
 Ahora, una vez que cada transformación se describe como una matriz, la secuencia de transformaciones se puede describir como un producto de estas matrices, y un "bucle" de $ k $ repeticiones se puede describir como la matriz elevada a la potencia de $ k $ (que se puede calcular usando exponenciación binaria en $ O(\log{k}) $). De esta manera, la matriz que representa todas las transformaciones se puede calcular primero en $ O(m \log{k}) $, y luego se puede aplicar a cada uno de los $ n $ puntos en $ O(n) $ para un total complejidad de $ O(n + m \log{k}) $.
@@ -215,8 +215,8 @@ Es decir: $ resultado_{ij} = \min \limits_{1 \ \leq\ k \ \leq\ n}(a_{ik} + b_{kj
 **Solución:** Simplemente aplicamos el algoritmo de construcción binaria descrito anteriormente, solo realizando sumas en lugar de multiplicaciones. En otras palabras, hemos "expandido" la multiplicación de dos números a $ O(\log m) $ operaciones de suma y multiplicación por dos (que, en esencia, es una suma).
 
 $$ a \cdot b = \begin{cases}
-0 & \text {si } a = 0 \\\\
-2 \cdot \frac{a} {2} \cdot b & \text{si } a> 0 \text{ y } a \text{ par} \\\\
+0 & \text {si } a = 0 \\
+2 \cdot \frac{a} {2} \cdot b & \text{si } a> 0 \text{ y } a \text{ par} \\
 2 \cdot \frac{a-1} {2} \cdot b + b & \text{si } a> 0 \text{ and } a \text{ impar}
 \end{cases} $$
 

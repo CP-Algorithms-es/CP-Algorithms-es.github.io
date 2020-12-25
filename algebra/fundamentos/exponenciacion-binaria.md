@@ -40,7 +40,7 @@ $$\begin{align}
 3^8 &= \left (3^4 \right)^2 = 81^2 = 6561
 \end{align}$$
 
-Entonces, para obtener la respuesta final para $3^{13}$, solo necesitamos multiplicar tres de ellos (omitiendo $3^2$ porque el bit correspondiente en $n$ no está configurado):
+Entonces, para obtener la respuesta final para $3^{13}$, solo necesitamos multiplicar tres de ellos (omitiendo $3^2$ porque el bit correspondiente en $n$ no es $1$):
 $3^{13} = 6561 \cdot 81 \cdot 3 = 1594323$
 
 La complejidad final de este algoritmo es $O(\log n)$: tenemos que calcular $\log n$ potencias de $a$, y luego tenemos que hacer como máximo $\log n$ multiplicaciones para obtener la respuesta final de ellos.

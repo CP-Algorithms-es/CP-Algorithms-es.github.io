@@ -4,6 +4,20 @@ title: Exponenciación Binaria
 
 {% include mathjax.html %}
 
+**Tabla de contenido**
+
+- [Exponenciación binaria](#exponenciación-binaria)
+  - [Algoritmo](#algoritmo)
+  - [Implementación](#implementación)
+  - [Aplicaciones](#aplicaciones)
+    - [Cálculo efectivo de grandes exponentes módulo un número](#cálculo-efectivo-de-grandes-exponentes-módulo-un-número)
+    - [Cálculo efectivo de números de Fibonacci](#cálculo-efectivo-de-números-de-fibonacci)
+    - [Aplicar una permutación $ k $ veces](#aplicar-una-permutación--k--veces)
+    - [Aplicación rápida de un conjunto de operaciones geométricas a un conjunto de puntos](#aplicación-rápida-de-un-conjunto-de-operaciones-geométricas-a-un-conjunto-de-puntos)
+    - [Número de caminos de longitud $ k $ en un gráfico](#número-de-caminos-de-longitud--k--en-un-gráfico)
+    - [Variación de la exponenciación binaria: multiplicar dos números módulo $ m $](#variación-de-la-exponenciación-binaria-multiplicar-dos-números-módulo--m-)
+  - [Problemas de práctica](#problemas-de-práctica)
+
 # Exponenciación binaria
 
 La exponenciación binaria (también conocida como exponenciación por cuadratura) es un truco que permite calcular $a^n$ usando solo $O(\log n)$ multiplicaciones (en lugar de $O(n)$ multiplicaciones requeridas por el enfoque ingenuo).

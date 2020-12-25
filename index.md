@@ -14,6 +14,7 @@ de datos especialmente populares en el campo de programación competitiva.
 
 * Fundamentos
   * [Exponenciación Binaria](./algebra/fundamentos/exponenciacion-binaria.md) 
+  * [Algoritmo Euclidiano para el cómputo del divisor común mayor](./algebra/fundamentos/algoritmo-euclidiano.md) 
 * Números Primos
 * Funciones de teoría de números
 * Aritmética de módulos

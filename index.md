@@ -13,6 +13,7 @@ de datos especialmente populares en el campo de programación competitiva.
 #### Algebra
 
 * Fundamentos
+  * [Exponenciación Binaria](./algebra/fundamentos/exponenciacion-binaria.md) 
 * Números Primos
 * Funciones de teoría de números
 * Aritmética de módulos

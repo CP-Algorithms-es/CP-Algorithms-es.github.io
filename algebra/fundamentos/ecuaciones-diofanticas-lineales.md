@@ -98,7 +98,7 @@ $$ y = y_0 - k (\frac{a}{g}) $$
 
 son soluciones de la ecuación Diofántica.
 
-Ademas, este es el conjunto de todas las posibles soluciones.
+Además, este es el conjunto de todas las posibles soluciones.
 
 # Encontrando el numero de soluciones y las soluciones en un intervalo dado
 

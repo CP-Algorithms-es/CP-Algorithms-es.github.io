@@ -1,5 +1,5 @@
 ---
-title: Ecuaciones diofántica lineales
+title: Ecuaciones diofánticas lineales
 ---
 
 {% include mathjax.html %}

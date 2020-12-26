@@ -5,7 +5,7 @@ permalink: /
 
 # CP Algorithms en Español
 
-Este proyecto tiene como objetivo traducir las páginas https://cp-algorithms.com/ y https://cp-algorithms.com/ al Español. Los artículos contienen descripciones de algoritmos y estructuras
+Este proyecto tiene como objetivo traducir las páginas [https://cp-algorithms.com/](https://cp-algorithms.com/) y [https://cp-algorithms.com/](https://cp-algorithms.com/) al Español. Los artículos contienen descripciones de algoritmos y estructuras
 de datos especialmente populares en el campo de programación competitiva.
 
 ### Artículos
@@ -13,7 +13,7 @@ de datos especialmente populares en el campo de programación competitiva.
 #### Algebra
 
 * Fundamentos
-  * [Exponenciación Binaria](./algebra/fundamentos/exponenciacion-binaria.md) 
+  * [Exponenciación Binaria](./algebra/fundamentos/exponenciacion-binaria.md)
   * [Algoritmo Euclidiano para el cómputo del divisor común mayor](./algebra/fundamentos/algoritmo-euclidiano.md)
   * [Ecuaciones Diofánticas Lineales](./algebra/fundamentos/ecuaciones-diofanticas-lineales.md)
 * Números Primos

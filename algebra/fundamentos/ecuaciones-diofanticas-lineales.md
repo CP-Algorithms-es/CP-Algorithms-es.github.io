@@ -91,7 +91,7 @@ Ahora, consideremos ver que sumando $\frac{b}{g}$ a $x_0$ y al mismo tiempo rest
 
 $$ a(x_0+\frac{b}{g})+b(y_0-\frac{a}{g}) = a x_0 + b y_0 + a (\frac{b}{g})-b (\frac{a}{g}) = c $$
 
-Obviamente, este procesos puede ser repetido nuevamente, por lo tanto, todos los numero de la forma 
+Obviamente, este proceso puede ser repetido nuevamente, por lo tanto, todos los números de la forma 
 
 $$ x = x_0 + k (\frac{b}{g}) $$
 $$ y = y_0 - k (\frac{a}{g}) $$

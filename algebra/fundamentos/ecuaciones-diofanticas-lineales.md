@@ -113,7 +113,7 @@ De forma similar, podemos encontrar el mínimo valor de $y$ $(y \geq min_y)$ y e
 
 La solución final es toda solución de $x$ en intersección con los intervalos $[l_{x1}, r_{x1}]$ y $[l_{x2},r_{x2}]$. Llamemos esta intersección como $[l_x,r_x]$.
 
-El siguiente código sigue los lineamientos de esta idea. Notar que dividimos $a$ y $b$ al principio por $g$. Ya que la ecuación $ax + by = c$ es equivalente a la ecuación $(\frac{a}{g})x + (\frac{b}{g})y = \frac{c}{g}$, podemos usar la ultima en vez de la primera y tener mcd($\frac{a}{g}x$,$\frac{b}{g}y$) = 1, que simplifica la formula.
+El siguiente código sigue los lineamientos de esta idea. Notar que dividimos $a$ y $b$ al principio por $g$. Ya que la ecuación $ax + by = c$ es equivalente a la ecuación $(\frac{a}{g})x + (\frac{b}{g})y = \frac{c}{g}$, podemos usar la ultima en vez de la primera y tener mcd($\frac{a}{g}x$,$\frac{b}{g}y$) = 1, que simplifica la fórmula.
 
 
 ```cpp 

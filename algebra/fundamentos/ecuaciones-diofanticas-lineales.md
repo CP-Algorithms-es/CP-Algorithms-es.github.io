@@ -167,7 +167,7 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
 }
 ```
 
-Una vez que tenemos $l_x$ y $r_x$, es también simple enumerar por sobre todas las soluciones. Solo necesitamos iterar desde $x = l_x + k (\frac{b}{g})$ para todo $k \geq 0$ hasta $x = r_x$, y encontrar los correspondientes valores de y usando la ecuación $ax + by = c$
+Una vez que tenemos $l_x$ y $r_x$, es también simple enumerar por sobre todas las soluciones. Solo necesitamos iterar desde $x = l_x + k (\frac{b}{g})$ para todo $k \geq 0$ hasta $x = r_x$, y encontrar los correspondientes valores de $y$ usando la ecuación $ax + by = c$
 
 # Encontrar la solución con mínimo valor de la suma de x e y
 

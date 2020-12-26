@@ -171,7 +171,7 @@ Una vez que tenemos $l_x$ y $r_x$, es también simple enumerar por sobre todas l
 
 # Encontrar la solución con mínimo valor de la suma de x e y
 
-Ahora, $x$ e $y$ necesitan también alguna restricción, sino, la respuesta puede convertirse infinitamente negativa.
+Ahora, $x$ e $y$ necesitan también alguna restricción, sino, la respuesta podría tornarse infinitamente negativa.
 
 La idea es similar a la sección previa. Tenemos que encontrar cualquier solución particular de la ecuación Diofántica, y luego variar la solución hasta satisfacer algunas condiciones.
 

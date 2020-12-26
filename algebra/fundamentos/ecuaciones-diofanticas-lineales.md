@@ -105,7 +105,7 @@ Además, este es el conjunto de todas las posibles soluciones.
 De la sección previa, debe haber quedado claro que si no imponemos restricciones en las soluciones, entonces podemos tener infinitas de ellas. Entonces, en esta sección agregaremos algunas restricciones en el intervalo de $x$ e $y$. Vamos a tratar de contar y enumerar todas las soluciones.
 
 Sean dos intervalos: $[min_x;max_x]$ y $[min_y;max_y]$ y supongamos que solo queremos encontrar las soluciones en esos dos intervalos.
-Notar que si $a$ o $b$ es 0, entonces el problema solo tiene una única solución- No vamos a considerar ese caso acá.
+Notar que si $a$ o $b$ es 0, entonces el problema solo tiene una única solución. No vamos a considerar ese caso acá.
 
 Primero, podemos encontrar una solución que tenga el mínimo valor de x, tal que $x\ge min_X$. Para hacer esto, necesitamos encontrar alguna soluciones de la ecuación Diofántica. Luego, variamos esta solución para obtener $x \ge min_x$ (usando lo que ya sabemos acerca del conjunto de todas las soluciones de la sección previa). Podemos hacer esto en $O(1)$. Denotemos el mínimo valor de x por $l_{x1}$.
 

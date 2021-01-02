@@ -64,7 +64,7 @@ y = x_1 - y_1 \cdot \left \lfloor \frac {a} {b} \right \rfloor
 ## Implementación
 
 ```cpp mcd_extendido
-int mcd(int a, int b, int & x, int & y) {
+int mcd(int a, int b, int& x, int& y) {
     if (b == 0) {
         x = 1;
         y = 0;
@@ -101,7 +101,7 @@ int mcd(int a, int b, int& x, int& y) {
 }
 ```
 
-Si observas de cerca las variables `a1` y ` b1`, podrás notar que toman exactamente los mismos valores que en la versión iterativa del [algoritmo euclidiano](algebra/fundamentos/algoritmo-euclidiano.html) normal. Entonces al menos el algoritmo calculará el MCD correcto.
+Si observas de cerca las variables `a1` y `b1`, podrás notar que toman exactamente los mismos valores que en la versión iterativa del [algoritmo euclidiano](algebra/fundamentos/algoritmo-euclidiano.html) normal. Entonces al menos el algoritmo calculará el MCD correcto.
 
 Para ver por qué el algoritmo también calcula los coeficientes correctos, puedes verificar que las siguientes invariantes se mantendrán en cualquier momento (antes del ciclo while y al final de cada iteración): $ x \cdot a + y \cdot b = a_1 $ y $ x_1 \cdot a + y_1 \cdot b = b_1 $.
 Es trivial ver que estas dos ecuaciones se satisfacen al principio.

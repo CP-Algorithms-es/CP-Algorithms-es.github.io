@@ -15,10 +15,10 @@ title: Algoritmo Euclidiano
 
 Mientras que el [algoritmo euclidiano](algebra/fundamentos/algoritmo-euclidiano.html) calcula solo el máximo común divisor (MCD) de dos enteros $ a $ y $ b $, la versión extendida también encuentra una manera de representar el MCD en términos de $ a $ y $ b $, es decir, encuentra coeficientes $ x $ y $ y $ para los cuales:
 
-$$ a \cdot x + b \cdot y = \gcd(a, b) $$
+$$ a \cdot x + b \cdot y = \text{mcd}(a, b) $$
 
 Es importante tener en cuenta que siempre podemos encontrar dicha representación, por ejemplo
-$ \gcd(55, 80) = 5 $, por lo que podemos representar $ 5 $ como una combinación lineal con los términos $ 55 $ y $ 80 $: $ 55 \cdot 3 + 80 \cdot (-2) = 5 $
+$ \text{mcd}(55, 80) = 5 $, por lo que podemos representar $ 5 $ como una combinación lineal con los términos $ 55 $ y $ 80 $: $ 55 \cdot 3 + 80 \cdot (-2) = 5 $
 
 Una forma más general de ese problema se analiza en el artículo sobre [Ecuaciones diofánticas lineales](algebra/fundamentos/ecuaciones-diofanticas-lineales.html).
 Se basará en este algoritmo.

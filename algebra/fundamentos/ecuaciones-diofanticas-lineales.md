@@ -4,14 +4,19 @@ title: Ecuaciones diofánticas lineales
 
 {% include mathjax.html %}
 
+
+
 **Tabla de contenido**
 
+- [Ecuaciones diofánticas lineales](#ecuaciones-diofánticas-lineales)
   - [El caso especial](#el-caso-especial)
   - [Encontrar una solución](#encontrar-una-solución)
-  - [Consiguiendo todas las soluciones](#consiguiendo-todas-las-soluciones)
-  - [Encontrando el numero de soluciones y las soluciones en un intervalo dado](#encontrando-el-numero-de-soluciones-y-las-soluciones-en-un-intervalo-dado)
+  - [Consiguiendo todas las soluciones:](#consiguiendo-todas-las-soluciones)
+  - [Encontrando el número de soluciones y las soluciones en un intervalo dado](#encontrando-el-número-de-soluciones-y-las-soluciones-en-un-intervalo-dado)
   - [Encontrar la solución con mínimo valor de la suma de x e y](#encontrar-la-solución-con-mínimo-valor-de-la-suma-de-x-e-y)
+  - [Problemas de Práctica](#problemas-de-práctica)
 
+# Ecuaciones diofánticas lineales
 
 Una ecuación diofántica lineal (en dos variables) es una ecuación general de la forma:
 
@@ -26,11 +31,11 @@ En este articulo, vamos a considerar algunos problemas clásicos sobre estas ecu
 * Encuentre el numero de solución y de soluciones dado un intervalo
 * Encontrar una solución con un el mínimo valor de $x+y$
 
-# El caso especial
+## El caso especial
 
 Un caso especial que debe ser tenido en cuenta es cuando $a = b = 0$. Es fácil ver que podemos tener tanto infinitas soluciones como ninguna, dependiendo si $c = 0$ o no. En el resto del articulo, vamos a ignorar este caso.
 
-# Encontrar una solución
+## Encontrar una solución
 
 Para encontrar una solución de la ecuación Diofántica con dos variables desconocidas, podemos usar el algoritmo de Euclides Extendido. Primero, asumamos que $a$ y $b$ son dos números positivos. Cuando aplicamos el algoritmo de Euclides Extendido para $a$ y $b$, podemos encontrar su  máximo común divisor $g$ y dos números $x_g$ e $y_g$ tales que:
 
@@ -80,7 +85,7 @@ bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g) {
 }
 ```
 
-# Consiguiendo todas las soluciones:
+## Consiguiendo todas las soluciones:
 
 Desde una solución particular $(x_0, y_0)$, podemos obtener todas las soluciones posibles de la ecuación dada.
 
@@ -102,7 +107,7 @@ son soluciones de la ecuación Diofántica.
 
 Además, este es el conjunto de todas las posibles soluciones.
 
-# Encontrando el numero de soluciones y las soluciones en un intervalo dado
+## Encontrando el número de soluciones y las soluciones en un intervalo dado
 
 De la sección previa, debe haber quedado claro que si no imponemos restricciones en las soluciones, entonces podemos tener infinitas de ellas. Entonces, en esta sección agregaremos algunas restricciones en el intervalo de $x$ e $y$. Vamos a tratar de contar y enumerar todas las soluciones.
 
@@ -171,7 +176,7 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
 
 Una vez que tenemos $l_x$ y $r_x$, es también simple enumerar por sobre todas las soluciones. Solo necesitamos iterar desde $x = l_x + k (\frac{b}{g})$ para todo $k \geq 0$ hasta $x = r_x$, y encontrar los correspondientes valores de $y$ usando la ecuación $ax + by = c$
 
-# Encontrar la solución con mínimo valor de la suma de x e y
+## Encontrar la solución con mínimo valor de la suma de x e y
 
 Ahora, $x$ e $y$ necesitan también alguna restricción, sino, la respuesta podría tornarse infinitamente negativa.
 
@@ -193,7 +198,7 @@ Si $a > b$, tenemos que seleccionar el máximo valor posible de $k$.
 
 Si $a = b$, todas las soluciones van a tener la misma suma $x + y$.
 
-## Practice Problems
+## Problemas de Práctica
 
 * [Spoj - Crucial Equation](http://www.spoj.com/problems/CEQU/)
 * [SGU 106](http://codeforces.com/problemsets/acmsguru/problem/99999/106)

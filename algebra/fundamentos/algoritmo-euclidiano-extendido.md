@@ -13,7 +13,7 @@ title: Algoritmo Euclidiano
 
 # Algoritmo euclidiano extendido
 
-Mientras que el [algoritmo euclidiano](../algebra/fundamentos/algoritmo-euclidiano.html) calcula solo el máximo común divisor (MCD) de dos enteros $ a $ y $ b $, la versión extendida también encuentra una manera de representar el MCD en términos de $ a $ y $ b $, es decir, encuentra coeficientes $ x $ y $ y $ para los cuales:
+Mientras que el [algoritmo euclidiano](algebra/fundamentos/algoritmo-euclidiano.html) calcula solo el máximo común divisor (MCD) de dos enteros $ a $ y $ b $, la versión extendida también encuentra una manera de representar el MCD en términos de $ a $ y $ b $, es decir, encuentra coeficientes $ x $ y $ y $ para los cuales:
 
 $$ a \cdot x + b \cdot y = \gcd(a, b) $$
 

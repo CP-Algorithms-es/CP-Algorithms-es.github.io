@@ -3,7 +3,8 @@ title: Algoritmo Euclidiano
 ---
 
 {% include mathjax.html %}
-**Tabla de contenidos**
+
+**Tabla de contenido**
 
 - [Algoritmo euclidiano extendido](#algoritmo-euclidiano-extendido)
   - [Algoritmo](#algoritmo)

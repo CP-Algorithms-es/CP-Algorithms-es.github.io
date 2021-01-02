@@ -11,7 +11,7 @@ title: Ecuaciones diofánticas lineales
   - [Consiguiendo todas las soluciones](#consiguiendo-todas-las-soluciones)
   - [Encontrando el numero de soluciones y las soluciones en un intervalo dado](#encontrando-el-numero-de-soluciones-y-las-soluciones-en-un-intervalo-dado)
   - [Encontrar la solución con mínimo valor de la suma de x e y](#encontrar-la-solución-con-mínimo-valor-de-la-suma-de-x-e-y)
-  
+
 
 Una ecuación diofántica lineal (en dos variables) es una ecuación general de la forma:
 
@@ -33,7 +33,7 @@ Un caso especial que debe ser tenido en cuenta es cuando $a = b = 0$. Es fácil 
 # Encontrar una solución
 
 Para encontrar una solución de la ecuación Diofántica con dos variables desconocidas, podemos usar el algoritmo de Euclides Extendido. Primero, asumamos que $a$ y $b$ son dos números positivos. Cuando aplicamos el algoritmo de Euclides Extendido para $a$ y $b$, podemos encontrar su  máximo común divisor $g$ y dos números $x_g$ e $y_g$ tales que:
-    
+
 $$ ax_g + by_g = g $$
 
 Si $c$ es divisible por $g = mcd(a,b)$, entonces la ecuación diofántica dada tiene solución, en caso contrario, no tiene ninguna. La demostración es bastante directa: una combinación lineal de dos números es divisible por su divisor común.
@@ -45,13 +45,14 @@ $$ a x_g (\frac{c}{g}) + b y_g (\frac{c}{g}) = c $$
 Por lo tanto, una de las soluciones de la ecuación Diofántica es:
 
 $$ x_0 = x_g (\frac{c}{g}) $$
+
 $$ y_0 = y_g (\frac{c}{g}) $$
 
 La idea de arriba todavía funciona en caso de que $a$ o $b$ sea alguno o ambos negativos. Solo necesitamos cambiar el signo de $x_0$ y de $y_0$ cuando sea necesario.
 
 Finalmente, podemos implementar esta idea como sigue (notar que este código no considera el caso $a=b=0$):
 
-```cpp 
+```cpp
 int gcd(int a, int b, int& x, int& y) {
     if (b == 0) {
         x = 1;
@@ -85,15 +86,16 @@ Desde una solución particular $(x_0, y_0)$, podemos obtener todas las solucione
 
 Sea $g = mcd(a,b)$ y sea $x_0, y_0$ números enteros tales que satisfagan la siguiente ecuación:
 
-$$ ax_0 + by_0 = c $$ 
+$$ ax_0 + by_0 = c $$
 
 Ahora, consideremos ver que sumando $\frac{b}{g}$ a $x_0$ y al mismo tiempo restando $\frac{a}{g}$ a $y_0$, la igualdad no se rompe:
 
 $$ a(x_0+\frac{b}{g})+b(y_0-\frac{a}{g}) = a x_0 + b y_0 + a (\frac{b}{g})-b (\frac{a}{g}) = c $$
 
-Obviamente, este proceso puede ser repetido nuevamente, por lo tanto, todos los números de la forma 
+Obviamente, este proceso puede ser repetido nuevamente, por lo tanto, todos los números de la forma
 
 $$ x = x_0 + k (\frac{b}{g}) $$
+
 $$ y = y_0 - k (\frac{a}{g}) $$
 
 son soluciones de la ecuación Diofántica.
@@ -116,7 +118,7 @@ La solución final es toda solución de $x$ en intersección con los intervalos 
 El siguiente código sigue los lineamientos de esta idea. Notar que dividimos $a$ y $b$ al principio por $g$. Ya que la ecuación $ax + by = c$ es equivalente a la ecuación $(\frac{a}{g})x + (\frac{b}{g})y = \frac{c}{g}$, podemos usar la ultima en vez de la primera y tener mcd($\frac{a}{g}x$,$\frac{b}{g}y$) = 1, que simplifica la fórmula.
 
 
-```cpp 
+```cpp
 void shift_solution(int & x, int & y, int a, int b, int cnt) {
     x += cnt * b;
     y -= cnt * a;

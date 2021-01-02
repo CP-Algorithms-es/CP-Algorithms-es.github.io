@@ -13,14 +13,14 @@ title: Algoritmo Euclidiano
 
 # Algoritmo euclidiano extendido
 
-Mientras que el [algoritmo euclidiano](algebra/fundamentos/algoritmo-euclidiano.html) calcula solo el máximo común divisor (MCD) de dos enteros $ a $ y $ b $, la versión extendida también encuentra una manera de representar el MCD en términos de $ a $ y $ b $, es decir, encuentra coeficientes $ x $ y $ y $ para los cuales:
+Mientras que el [algoritmo euclidiano](/algebra/fundamentos/algoritmo-euclidiano.html) calcula solo el máximo común divisor (MCD) de dos enteros $ a $ y $ b $, la versión extendida también encuentra una manera de representar el MCD en términos de $ a $ y $ b $, es decir, encuentra coeficientes $ x $ y $ y $ para los cuales:
 
 $$ a \cdot x + b \cdot y = \text{mcd}(a, b) $$
 
 Es importante tener en cuenta que siempre podemos encontrar dicha representación, por ejemplo
 $ \text{mcd}(55, 80) = 5 $, por lo que podemos representar $ 5 $ como una combinación lineal con los términos $ 55 $ y $ 80 $: $ 55 \cdot 3 + 80 \cdot (-2) = 5 $
 
-Una forma más general de ese problema se analiza en el artículo sobre [Ecuaciones diofánticas lineales](algebra/fundamentos/ecuaciones-diofanticas-lineales.html).
+Una forma más general de ese problema se analiza en el artículo sobre [Ecuaciones diofánticas lineales](/algebra/fundamentos/ecuaciones-diofanticas-lineales.html).
 Se basará en este algoritmo.
 
 ## Algoritmo
@@ -101,7 +101,7 @@ int mcd(int a, int b, int& x, int& y) {
 }
 ```
 
-Si observas de cerca las variables `a1` y `b1`, podrás notar que toman exactamente los mismos valores que en la versión iterativa del [algoritmo euclidiano](algebra/fundamentos/algoritmo-euclidiano.html) normal. Entonces al menos el algoritmo calculará el MCD correcto.
+Si observas de cerca las variables `a1` y `b1`, podrás notar que toman exactamente los mismos valores que en la versión iterativa del [algoritmo euclidiano](/algebra/fundamentos/algoritmo-euclidiano.html) normal. Entonces al menos el algoritmo calculará el MCD correcto.
 
 Para ver por qué el algoritmo también calcula los coeficientes correctos, puedes verificar que las siguientes invariantes se mantendrán en cualquier momento (antes del ciclo while y al final de cada iteración): $ x \cdot a + y \cdot b = a_1 $ y $ x_1 \cdot a + y_1 \cdot b = b_1 $.
 Es trivial ver que estas dos ecuaciones se satisfacen al principio.

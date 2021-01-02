@@ -3,6 +3,13 @@ title: Algoritmo Euclidiano
 ---
 
 {% include mathjax.html %}
+**Tabla de contenidos**
+
+- [Algoritmo euclidiano extendido](#algoritmo-euclidiano-extendido)
+  - [Algoritmo](#algoritmo)
+  - [Implementación](#implementación)
+  - [Versión iterativa](#versión-iterativa)
+  - [Problemas de práctica](#problemas-de-práctica)
 
 # Algoritmo euclidiano extendido
 

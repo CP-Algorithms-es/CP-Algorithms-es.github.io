@@ -63,7 +63,7 @@ y = x_1 - y_1 \cdot \left \lfloor \frac {a} {b} \right \rfloor
 
 ## Implementación
 
-```cpp mcd_extendido
+```cpp
 int mcd(int a, int b, int& x, int& y) {
     if (b == 0) {
         x = 1;
@@ -87,7 +87,7 @@ Esta implementación del algoritmo euclidiano extendido también produce resulta
 También es posible escribir el algoritmo euclidiano extendido de forma iterativa.
 Debido a que evita la recursividad, el código se ejecutará un poco más rápido que el recursivo.
 
-```cpp mcd_extendido_iter
+```cpp
 int mcd(int a, int b, int& x, int& y) {
     x = 1, y = 0;
     int x1 = 0, y1 = 1, a1 = a, b1 = b;

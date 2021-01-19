@@ -45,7 +45,7 @@ Los números de Fibonacci poseen muchas propiedades interesantes. Estas son algu
 * Identidad MCD:
   $$ MCD(F_m, F_n) = F_{MCD(m, n)} $$
 
-* Los números de Fibonacci son las peores entradas posibles para el algoritmo euclidiano (consulte el teorema de Lamé en [algoritmo euclidiano](./algebra/fundamentos/algoritmo-euclidiano.html))
+* Los números de Fibonacci son las peores entradas posibles para el algoritmo euclidiano (consulte el teorema de Lamé en [algoritmo euclidiano](/algebra/fundamentos/algoritmo-euclidiano.html))
 
 ## Codificación Fibonacci
 
@@ -111,7 +111,7 @@ Denotando $ P \equiv \begin{pmatrix} 0 & 1 \cr 1 & 1 \cr\end{pmatrix} $, tenemos
 
 $$ \begin{pmatrix} F_n & F_{n + 1} \cr\end{pmatrix} = \begin{pmatrix} F_0 & F_1 \cr\end{pmatrix} \cdot P ^ n $$
 
-Por tanto, para encontrar $ F_n $, debemos elevar la matriz $ P $ a $ n $. Esto se puede hacer en $ O (\log n) $ (ver [Exponenciación binaria](./algebra/fundamentos/exponenciacion-binaria.html)).
+Por tanto, para encontrar $ F_n $, debemos elevar la matriz $ P $ a $ n $. Esto se puede hacer en $ O (\log n) $ (ver [Exponenciación binaria](/algebra/fundamentos/exponenciacion-binaria.html)).
 
 ### Método de duplicación rápido
 

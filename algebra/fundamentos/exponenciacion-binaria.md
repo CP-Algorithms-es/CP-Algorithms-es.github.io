@@ -106,7 +106,7 @@ long long binpow (long long a, long long b) {
 
 **Problema:**
 Calcule $ x^n \bmod m $.
-Ésta es una operación muy común. Por ejemplo, se utiliza para calcular el [inverso multiplicativo modular](./algebra/fundamentos/inverso-modular.html).
+Ésta es una operación muy común. Por ejemplo, se utiliza para calcular el [inverso multiplicativo modular](/algebra/fundamentos/inverso-modular.html).
 
 **Solución:**
 Como sabemos que el operador del módulo no interfiere con las multiplicaciones ($ a \cdot b \equiv (a \bmod m) \cdot (b \bmod m) \pmod m $), podemos usar directamente el mismo código y simplemente reemplazar cada multiplicación con una multiplicación modular:
@@ -126,13 +126,13 @@ long long binpow(long long a, long long b, long long m) {
 ```
 
 **Nota:** Si $ m $ es un número primo, podemos acelerar un poco este algoritmo calculando $ x^{n \mod (m-1)} $ en lugar de $ x^n $.
-Esto se sigue directamente del [pequeño teorema de Fermat](./algebra/inverso-modular.html#toc-tgt-2).
+Esto se sigue directamente del [pequeño teorema de Fermat](/algebra/inverso-modular.html#toc-tgt-2).
 
 ### Cálculo efectivo de números de Fibonacci
 
 **Problema:** Calcule el $ n $-ésimo número de Fibonacci $ F_n $.
 
-**Solución:** Para obtener más detalles, consulte el [artículo sobre el número de Fibonacci](.algebra/numeros-de-fibonacci.html).
+**Solución:** Para obtener más detalles, consulte el [artículo sobre el número de Fibonacci](/algebra/fundamentos/numeros-de-fibonacci.html).
 Solo veremos una descripción general del algoritmo.
 Para calcular el siguiente número de Fibonacci, solo se necesitan los dos anteriores, como $ F_n = F_{n-1} + F_{n-2} $.
 Podemos construir una matriz de $ 2 \times 2 $ que describa esta transformación:
@@ -214,7 +214,7 @@ Ahora, una vez que cada transformación se describe como una matriz, la secuenci
 
 **Problema:** Dado un gráfico dirigido sin pesos de $ n $ vértices, encuentre el número de caminos de longitud $ k $ desde cualquier vértice $ u $ a cualquier otro vértice $ v $.
 
-**Solución:** Este problema se analiza con más detalle en [un artículo separado](./grafos/caminos-de-longitud-fija.html). El algoritmo consiste en elevar la matriz de adyacencia $ M $ del gráfico (una matriz donde $ m_{ij} = 1 $ si hay una arista de $ i $ a $ j $, o $ 0 $ en caso contrario) a la $ k $-ésimo potencia. Ahora $ m_{ij} $ será el número de caminos de longitud $ k $ desde $ i $ a $ j $. La complejidad temporal de esta solución es $ O(n^3 \log k) $.
+**Solución:** Este problema se analiza con más detalle en [un artículo separado](/grafos/caminos-de-longitud-fija.html). El algoritmo consiste en elevar la matriz de adyacencia $ M $ del gráfico (una matriz donde $ m_{ij} = 1 $ si hay una arista de $ i $ a $ j $, o $ 0 $ en caso contrario) a la $ k $-ésimo potencia. Ahora $ m_{ij} $ será el número de caminos de longitud $ k $ desde $ i $ a $ j $. La complejidad temporal de esta solución es $ O(n^3 \log k) $.
 
 **Nota:** En ese mismo artículo, se considera otra variación de este problema: cuando los ejes están ponderados y se requiere encontrar la ruta de peso mínimo que contenga exactamente $ k $ ejes. Como se muestra en ese artículo, este problema también se resuelve mediante exponenciación de la matriz de adyacencia. La matriz tendría el peso de la arista desde $ i $ a $ j $, o $ \infty $ si no existe dicha arista.
 En lugar de la operación habitual de multiplicar dos matrices, se debe utilizar una modificada:

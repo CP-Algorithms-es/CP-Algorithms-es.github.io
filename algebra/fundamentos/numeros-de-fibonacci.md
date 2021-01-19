@@ -116,10 +116,12 @@ Por tanto, para encontrar $ F_n $, debemos elevar la matriz $ P $ a $ n $. Esto 
 ### Método de duplicación rápido
 
 Usando el método anterior podemos encontrar estas ecuaciones:
-$$ \begin{array} {rll}
-                        F_ {2k} &= F_k \left (2F_ {k + 1} - F_ {k} \right). \\
-                        F_ {2k + 1} &= F_ {k + 1} ^ 2 + F_ {k} ^ 2.
+
+$$ \begin{array}{rll}
+    F_ {2k} &= F_k \left (2F_ {k + 1} - F_ {k} \right). \\
+    F_ {2k + 1} &= F_ {k + 1} ^ 2 + F_ {k} ^ 2.
 \end{array} $$
+
 Por lo tanto, utilizando las dos ecuaciones anteriores, los números de Fibonacci se pueden calcular fácilmente mediante el siguiente código:
 
 ```cpp

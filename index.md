@@ -17,6 +17,7 @@ de datos especialmente populares en el campo de programación competitiva.
   * [Algoritmo Euclidiano para el cómputo del divisor común mayor](./algebra/fundamentos/algoritmo-euclidiano.md)
   * [Algoritmo Euclidiano Extendido](./algebra/fundamentos/algoritmo-euclidiano-extendido.md)
   * [Ecuaciones Diofánticas Lineales](./algebra/fundamentos/ecuaciones-diofanticas-lineales.md)
+  * [Números de Fibonacci](./algebra/fundamentos/numeros-de-fibonacci.md)
 * Números Primos
 * Funciones de teoría de números
 * Aritmética de módulos

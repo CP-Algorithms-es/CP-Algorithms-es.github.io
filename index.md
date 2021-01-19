@@ -19,6 +19,7 @@ de datos especialmente populares en el campo de programación competitiva.
   * [Ecuaciones Diofánticas Lineales](./algebra/fundamentos/ecuaciones-diofanticas-lineales.md)
   * [Números de Fibonacci](./algebra/fundamentos/numeros-de-fibonacci.md)
 * Números Primos
+  * [Criba de Eratóstenes](./algebra/numeros-primos/criba-de-eratostenes.md)
 * Funciones de teoría de números
 * Aritmética de módulos
 * Sistemas de números

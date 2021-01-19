@@ -105,7 +105,7 @@ Como estas dos fórmulas requerirían una precisión muy alta al trabajar con n�
 
 Es fácil probar la siguiente relación:
 
-$$ \begin{pmatrix} F_{n-1} & F_ {n} \cr\end{pmatrix} = \begin{pmatrix} F_{n-2} & F_{n-1} \cr\end{pmatrix } \cdot \begin{pmatrix} 0 & 1 \cr 1 & 1 \cr\end{pmatrix} $$
+$$ \begin{pmatrix} F_{n-1} & F_ {n} \cr\end{pmatrix} = \begin{pmatrix} F_{n-2} & F_{n-1} \cr\end{pmatrix} \cdot \begin{pmatrix} 0 & 1 \cr 1 & 1 \cr\end{pmatrix} $$
 
 Denotando $ P \equiv \begin{pmatrix} 0 & 1 \cr 1 & 1 \cr\end{pmatrix} $, tenemos:
 

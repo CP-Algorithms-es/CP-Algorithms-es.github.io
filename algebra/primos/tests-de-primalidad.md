@@ -38,7 +38,7 @@ Múltiples optimizaciones están descritas en el artículo de factorización de 
 
 Es un test probabilistico.
 
-El pequeño teorema de Fermat afirma, que para un número primo $p$ y un entero coprimo $a$ con p, la siguiente ecuaciones de congruencia es válida:
+El pequeño teorema de Fermat afirma, que para un número primo $p$ y un entero coprimo $a$ con $p$, la siguiente ecuación de congruencia es válida:
 
 $$a^{p-1} \equiv 1 \bmod p$$
 
@@ -72,33 +72,33 @@ bool probablyPrimeFermat(int n, int iter=5) {
 }
 ```
 
-Usamos (LINK, exponenciación Binaria), para computar eficientemente la potencia de $a^{p-1}$.
+Usamos [exponenciación binaria](/algebra/fundamentos/exponenciacion-binaria.html) para computar eficientemente la potencia de $a^{p-1}$.
 
 Hay una mala noticia sin embargo:
-Existen algunos números compuestos donde $a^{n-1} \equiv 1 \bmod n$ es valido para cualquier $a$ coprimo con n, por ejemplo el número $561 = 3 \cdot 11 \cdot 17$.
+Existen algunos números compuestos donde $a^{n-1} \equiv 1 \bmod n$ es válido para cualquier $a$ coprimo con $n$, por ejemplo el número $561 = 3 \cdot 11 \cdot 17$.
 Estos números se llaman "Números de Carmichael".
 El test de Fermat sólo puede identificar estos números como compuestos en caso que tengamos la suerte que se elija una base $a$ con $\gcd(a, n) \ne 1$.
 
 El test es todavía usado en la práctica, ya que es bastante rápido y los números de Carmichael son bastante raros.
-Por ejemplo, solo existen 646 de estos números más pequeños de $10^9$
+Por ejemplo, solo existen 646 de estos números más pequeños de $10^9$.
 
 ## Test de primalidad de Miller-Rabin
 
 El test de Miller-Rabin extiende las ideas del test de Fermat.
 
-Para un número impar $n$, $n-1$ es par y podemos encontrar todas sus factores que son potencias de dos.
+Para un número impar $n$, $n-1$ es par y podemos encontrar todos sus factores que son potencias de dos.
 Podemos escribir:
 $$n - 1 = 2^s \cdot d,~\text{con}~d~\text{impar}.$$
 Esto nos permite factorizar la ecuación del Pequeño Teorema de Fermat:
 $$\begin{array}{rl}
-a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\\
-&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-1} d} - 1) \equiv 0 \bmod n \\\\
-&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) (a^{2^{s-2} d} - 1) \equiv 0 \bmod n \\\\
-&\quad\vdots \\\\
-&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\\\
+a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-1} d} - 1) \equiv 0 \bmod n \\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) (a^{2^{s-2} d} - 1) \equiv 0 \bmod n \\
+&\quad\vdots \\
+&\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\
 \end{array}$$
 
-Si $n$ es primo, entonces $n$ tiene que dividir a uno de estos factores (recordar que los números primos tienen la propiedad que si d | a * b entonces d|a o d|b, que es algo que no se cumple necesariamente para números compuestos)
+Si $n$ es primo, entonces $n$ tiene que dividir a uno de estos factores (recordar que los números primos tienen la propiedad que si $d | a \times b$ entonces $d|a$ o $d|b$, que es algo que no se cumple necesariamente para números compuestos)
 y en el test podemos comprobar exactamente esta afirmación, con lo cual, es una versión más estricta que la afirmación del test de Fermat.
 Para una base $2 \le a \le n-2$ comprobamos si
 $$a^d \equiv 1 \bmod n$$
@@ -113,7 +113,7 @@ De forma similar al test de Fermat, es también posible que el conjunto de ecuac
 En ese caso, la base $a$ se denomina *fuertemente mentirosa* (strong liar).
 Si una base $a$ satisface la ecuación (una de ellas), $n$ es solo un *primo fuertemente probable*.
 Sin embargo, no hay números como los de Carmichael, donde todas sus bases no triviales son mentirosas.
-Incluso es posible demostrar, que hay al menos $\frac{1}{4}$ de las bases que son fuertemente mentirosas.
+Incluso es posible demostrar, que como máximo $\frac{1}{4}$ de las bases pueden ser fuertemente mentirosas.
 Si $n$ es compuesta, tenemos una probabilidad de $\ge 75\%$ que una base aleatoria nos pueda decir que es compuesto.
 Realizando este procedimiento con múltiples iteraciones, eligiendo diferentes bases al azar, podemos decir con una alta probabilidad si el número es verdaderamente primo o es compuesto.
 
@@ -181,7 +181,7 @@ Esto sin embargo sigue siendo un número bastante grande de bases.
 Algunas personas han utilizado bastante poder de cómputo para encontrar cotas inferiores.
 Resultó que, para comprobar un número entero de 32 bit es solo necesario comprobar las primeras 4 bases: 2,3, 5 y 7.
 El número compuesto más pequeño que falla este test es $3,215,031,751 = 151 \cdot 751 \cdot 28351$.
-y para comprobar enteros de 64 bits, es suficiente comprobar las primeras 12 números primos: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 y 37.
+y para comprobar enteros de 64 bits, es suficiente comprobar los primeros 12 números primos: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 y 37.
 Esto resulta en la siguiente implementación determinista
 ```cpp
 bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
@@ -205,7 +205,7 @@ bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
 }
 ```
 Es también posible comprobar solo con 7 bases: 2, 325, 9375, 28178, 450775, 9780504 y 1795265022.
-Sin embargo, como estos números no son primos (excepto el 2), hay que comprobar adicionalmente si el número que se esta mirando es igual a algún divisor primo de las siguiente bases: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.
+Sin embargo, como estos números no son primos (excepto el 2), hay que comprobar adicionalmente si el número que se está mirando es igual a algún divisor primo de las siguientes bases: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.
 
 ## Problemas de práctica
 

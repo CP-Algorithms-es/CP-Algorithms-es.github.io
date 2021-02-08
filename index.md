@@ -21,6 +21,7 @@ de datos especialmente populares en el campo de programación competitiva.
 * Números Primos
 	* [Tests de Primalidad](./algebra/primos/tests-de-primalidad.md)
 * Funciones de teoría de números
+	* [Divisores](./algebra/teoria-de-numeros/divisores.md)
 * Aritmética de módulos
 * Sistemas de números
 * Diversos

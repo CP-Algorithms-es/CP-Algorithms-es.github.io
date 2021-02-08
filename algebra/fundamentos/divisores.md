@@ -21,7 +21,7 @@ Por lo general, el número de subconjuntos es $2 ^ x$ para un conjunto con eleme
 Sin embargo, esto ya no es cierto si hay elementos repetidos en el conjunto. En nuestro caso, algunos factores primos pueden aparecer varias veces en la factorización prima de $n$.
 
 Si un factor primo $p$ aparece $e$ veces en la factorización prima de $n$, entonces podemos usar el factor $p$ hasta $e$ veces en el subconjunto.
-Lo que significa que tenemos opciones de $e + 1$.
+Lo que significa que tenemos $e + 1$ opciones.
 
 Por lo tanto, si la factorización prima de $n$ es $p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$, donde $p_i$ son números primos distintos, entonces el número de divisores es:
 $$d(n) = (e_1 + 1) \cdot (e_2 + 1) \cdots (e_k + 1)$$
@@ -31,15 +31,15 @@ Una forma de pensarlo es la siguiente:
 
 * Si solo hay un divisor primo distinto $n = p_1^{e_1}$, entonces obviamente hay $e_1 + 1$ divisores ($1, p_1, p_1^2, \dots, p_1^{e_1}$).
 
-* Si hay dos divisores primos distintos $n = p_1^{e_1} \cdot p_2^{e_2}$, entonces puede organizar todos los divisores en forma de tabla.
+* Si hay dos divisores primos distintos $n = p_1^{e_1} \cdot p_2^{e_2}$, entonces se pueden organizar todos los divisores en forma de tabla.
 $$\begin{array}{c|ccccc}
-& 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
+& 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\
 \hline
-1 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\
-p_1 & p_1 & p_1 \cdot p_2 & p_1 \cdot p_2^2 & \dots & p_1 \cdot p_2^{e_2} \\\\
-p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e_2} \\\\
-\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\\\
-p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\\\
+1 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\
+p_1 & p_1 & p_1 \cdot p_2 & p_1 \cdot p_2^2 & \dots & p_1 \cdot p_2^{e_2} \\
+p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e_2} \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\
 \end{array}$$
 	Entonces, el número de divisores es trivialmente $(e_1 + 1) \cdot (e_2 + 1)$.
 

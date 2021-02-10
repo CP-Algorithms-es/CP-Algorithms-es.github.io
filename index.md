@@ -20,7 +20,9 @@ de datos especialmente populares en el campo de programación competitiva.
   * [Números de Fibonacci](./algebra/fundamentos/numeros-de-fibonacci.md)
 * Números Primos
   * [Criba de Eratóstenes](./algebra/numeros-primos/criba-de-eratostenes.md)
+	* [Tests de Primalidad](./algebra/primos/tests-de-primalidad.md)
 * Funciones de teoría de números
+	* [Divisores](./algebra/teoria-de-numeros/divisores.md)
 * Aritmética de módulos
 * Sistemas de números
 * Diversos

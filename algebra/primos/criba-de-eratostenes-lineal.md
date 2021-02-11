@@ -4,6 +4,17 @@ title: Criba de Eratóstenes con Complejidad Temporal Lineal
 
 {% include mathjax.html %}
 
+**Tabla de contenido**
+
+- [Criba de Eratóstenes con Complejidad Temporal Lineal](#criba-de-eratóstenes-con-complejidad-temporal-lineal)
+  - [Algoritmo](#algoritmo)
+  - [Implementación](#implementación)
+  - [Demostración de correctitud](#demostración-de-correctitud)
+  - [Complejidad Temporal y Espacial](#complejidad-temporal-y-espacial)
+  - [Referencias](#referencias)
+
+# Criba de Eratóstenes con Complejidad Temporal Lineal
+
 Dado un número $n$, encontrar todos los números primos en un segmento $[2;n]$.
 
 La forma estándar de resolver este problema es usar una [criba de Eratóstenes](./criba-de-eratostenes.md). Este algoritmo es muy simple, pero tiene complejidad temporal $O(n \log \log n)$.

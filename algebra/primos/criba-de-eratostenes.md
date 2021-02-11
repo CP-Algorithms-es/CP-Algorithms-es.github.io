@@ -4,6 +4,22 @@ title: Criba de Eratóstenes
 
 {% include mathjax.html %}
 
+**Tabla de contenido**
+
+- [Criba de Eratóstenes](#criba-de-eratóstenes)
+  - [Implementación](#implementación)
+  - [Análisis asintótico](#análisis-asintótico)
+  - [Diferentes optimizaciones de la Criba de Eratóstenes](#diferentes-optimizaciones-de-la-criba-de-eratóstenes)
+    - [Tamizado hasta la raíz](#tamizado-hasta-la-raíz)
+    - [Tamizado solo por los números impares](#tamizado-solo-por-los-números-impares)
+    - [Reducir la memoria consumida](#reducir-la-memoria-consumida)
+    - [Criba Segmentada](#criba-segmentada)
+  - [Encontrar números primos en un rango](#encontrar-números-primos-en-un-rango)
+  - [Modificación de tiempo lineal](#modificación-de-tiempo-lineal)
+  - [Problemas de Práctica](#problemas-de-práctica)
+
+# Criba de Eratóstenes
+
 La Criba de Eratóstenes es un algoritmo para encontrar todos los números primos en un segmento $[1;n]$ usando $O(n \log \log n)$ operaciones.
 
 El algoritmo es muy simple:

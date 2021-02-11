@@ -21,9 +21,9 @@ de datos especialmente populares en el campo de programación competitiva.
 * Números Primos
   * [Criba de Eratóstenes](./algebra/primos/criba-de-eratostenes.md)
   * [Criba de Eratóstenes con Complejidad Temporal Lineal](./algebra/primos/criba-de-eratostenes-lineal.md)
-	* [Tests de Primalidad](./algebra/primos/tests-de-primalidad.md)
+  * [Tests de Primalidad](./algebra/primos/tests-de-primalidad.md)
 * Funciones de teoría de números
-	* [Divisores](./algebra/teoria-de-numeros/divisores.md)
+  * [Divisores](./algebra/teoria-de-numeros/divisores.md)
 * Aritmética de módulos
 * Sistemas de números
 * Diversos

@@ -21,7 +21,7 @@ En la siguiente imagen puede verse una visualización del algoritmo para calcula
 
 La idea detrás es esta:
 Un número es primo, si ninguno de los números primos más pequeños lo divide.
-Dado que iteramos sobre los números primos en orden, ya marcamos todos los números, que son divisibles por al menos uno de los números primos, como divisibles.
+Dado que iteramos sobre los números primos en orden, ya marcamos todos los números que son divisibles por al menos uno de los números primos como divisibles.
 Por lo tanto, si llegamos a una celda y no está marcada, entonces no es divisible por ningún número primo más pequeño y, por lo tanto, tiene que ser primo.
 
 ## Implementación
@@ -254,4 +254,3 @@ Sin embargo, este algoritmo también tiene sus propias debilidades.
 * [SPOJ - Printing some primes (hard)](http://www.spoj.com/problems/PRIMES2/)
 * [Codeforces - Nodbach Problem](https://codeforces.com/problemset/problem/17/A)
 * [Codefoces - Colliders](https://codeforces.com/problemset/problem/154/B)
-

@@ -35,7 +35,7 @@ Esta es una [Ecuación Lineal Diofántica](https://cp-algorithms-es.github.io/al
 
 Ahora, si tomamos modulo $m$ de ambos lados, podemos deshacernos de $m\cdot y$, y la ecuación se convierte en:
 
-$$a\:⋅\:x\:≡\:1\:mod\:m$$
+$$a\cdot\:x\:≡\:1\:mod\:m$$
 
 Por lo tanto, el inverso modular de $a$ es $x$.
 

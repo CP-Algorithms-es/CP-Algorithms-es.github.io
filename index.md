@@ -25,6 +25,8 @@ de datos especialmente populares en el campo de programación competitiva.
 * Funciones de teoría de números
   * [Divisores](./algebra/teoria-de-numeros/divisores.md)
 * Aritmética de módulos
+  * [Inverso multiplicativo modular](./algebra/Aritmetica-modular/Inverso-multiplicativo-modular.md)
+  * [Ecuación de congruencia lineal](./algebra/Aritmetica-modular/Ecuacion-de-congruencia-lineal.md)
 * Sistemas de números
 * Diversos
 
